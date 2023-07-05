@@ -7,17 +7,11 @@ if (!isset($_SESSION['user_name'])) {
     exit();
 }
 
-// Set a time limit for the session
-$sessionExpireTime = 60; // Time limit in seconds (1 hour)
+// Get the current filename and remove the extension
+$currentFile = basename($_SERVER['PHP_SELF'], '.php');
 
-// Check if the session has expired
-if (isset($_SESSION['last_activity']) && time() > ($_SESSION['last_activity'] + $sessionExpireTime)) {
-    // Session expired, destroy session and redirect to login page
-    session_destroy();
-    header('Location: login.php');
-    exit();
-}
+// Define an array of valid pages
+$validPages = array('dashboard', 'userdata', 'addUser', 'editUser', 'patientdata', 'diseasedata', 'symptomdata', 'reports', 'adminSettings', 'logout');
 
-// Update last activity time
-$_SESSION['last_activity'] = time();
-
+// Check if the current page is valid
+$activePage = (in_array($currentFile, $validPages)) ? $currentFile : 'dashboard';

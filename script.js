@@ -1,11 +1,11 @@
 // Function to display the remaining time
 function displayRemainingTime() {
-    var sessionExpireTime = 60; // Time limit in seconds (1 hour)
-    var remainingTime = sessionExpireTime; // Initial remaining time in seconds
+    const sessionExpireTime = 3600; // Time limit in seconds (1 hour)
+    let remainingTime = sessionExpireTime; // Initial remaining time in seconds
 
-    var timerElement = document.getElementById('timer'); // Get the timer element
-    var sessionExpireElement = document.getElementById('session-expire'); // Get the session expire element
-    var countdown; // Variable to hold the countdown timeout
+    const timerElement = document.getElementById('timer'); // Get the timer element
+    const sessionExpireElement = document.getElementById('session-expire'); // Get the session expire element
+    let countdown; // Variable to hold the countdown timeout
 
     // Function to update the countdown timer
     function updateTimer() {
@@ -49,3 +49,32 @@ function displayRemainingTime() {
 
 // Call the displayRemainingTime function when the page loads
 window.addEventListener('load', displayRemainingTime);
+
+function togglePasswordVisibility() {
+    var passwordInput = document.getElementById("password");
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
+    }
+}
+
+function setMaxDate() {
+    // Get the current date
+    const currentDate = new Date();
+
+    // Calculate the maximum allowed date (22 years ago)
+    const maxDate = new Date();
+    maxDate.setFullYear(currentDate.getFullYear() - 22);
+
+    // Convert the maximum date to a string in yyyy-mm-dd format
+    const maxDateString = maxDate.toISOString().split('T')[0];
+
+    // Set the maximum date for the date picker
+    document.getElementById("date_of_birth").setAttribute("max", maxDateString);
+}
+
+// Call the function to set the maximum date when the page loads
+window.onload = setMaxDate;
+
+

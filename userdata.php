@@ -1,14 +1,17 @@
 <?php
-global $activePage;
 @include 'config.php';
 @include 'session.php';
 
+// Retrieve user data from the database
+$selectQuery = "SELECT * FROM users";
+$result = mysqli_query($conn, $selectQuery);
 ?>
 
 <!DOCTYPE html>
 <html lang="">
 <head>
     <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="script.js"></script>
 </head>
@@ -70,52 +73,60 @@ global $activePage;
             </div>
         </div>
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
+
         <div class="content_data">
-            <a class="content_manage" href="userdata.php">
-                <h3>Manage Users</h3>
-                <ul>
-                    <li>Add User</li>
-                    <li>Edit User</li>
-                    <li>Delete User</li>
-                </ul>
-            </a>
-
-            <a class="content_manage" href="patientdata.php">
-                <h3>Manage Patients</h3>
-                <ul>
-                    <li>Add User</li>
-                    <li>Edit User</li>
-                    <li>Delete User</li>
-                </ul>
-            </a>
-
-            <a class="content_manage" href="diseasedata.php">
-                <h3>Manage Diseases</h3>
-                <ul>
-                    <li>Add User</li>
-                    <li>Edit User</li>
-                    <li>Delete User</li>
-                </ul>
-            </a>
-
-            <a class="content_manage" href="symptomdata.php">
-                <h3>Manage Symptoms</h3>
-                <ul>
-                    <li>Add User</li>
-                    <li>Edit User</li>
-                    <li>Delete User</li>
-                </ul>
-            </a>
-
-            <a class="content_manage" href="reports.php">
-                <h3>Reports</h3>
-                <ul>
-                    <li>Generate Report</li>
-                    <li>View Reports</li>
-                </ul>
-            </a>
+            <div class="content-data_user">
+                <div class="content-data_user--header">
+                    <h2>User Data</h2>
+                    <div>
+                        <a href="addUser.php">
+                            <button>Add User</button>
+                        </a>
+                    </div>
+                </div>
+                <table id="userData">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Medical ID</th>
+                        <th>User Type</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact Number</th>
+                        <th>Address</th>
+                        <th>Specialization</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<tr onclick="window.location.href=\'editUser.php?medical_id=' . $row['medical_id'] . '\';">';
+                        echo '<td>' . $row['id'] . '</td>';
+                        echo '<td>' . $row['medical_id'] . '</td>';
+                        echo '<td>' . $row['user_type'] . '</td>';
+                        echo '<td>' . $row['name'] . '</td>';
+                        echo '<td>' . $row['email'] . '</td>';
+                        echo '<td>' . $row['contact_number'] . '</td>';
+                        echo '<td>' . $row['address'] . '</td>';
+                        echo '<td>' . $row['specialization'] . '</td>';
+                        echo '</tr>';
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+<script src="search.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#userData').DataTable();
+    });
+</script>
+
 </body>
 </html>
+

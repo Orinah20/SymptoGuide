@@ -1,8 +1,7 @@
 <?php
-global $activePage;
+
 @include 'config.php';
 @include 'session.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -71,51 +70,15 @@ global $activePage;
         </div>
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
         <div class="content_data">
-            <a class="content_manage" href="userdata.php">
-                <h3>Manage Users</h3>
-                <ul>
-                    <li>Add User</li>
-                    <li>Edit User</li>
-                    <li>Delete User</li>
-                </ul>
-            </a>
 
-            <a class="content_manage" href="patientdata.php">
-                <h3>Manage Patients</h3>
-                <ul>
-                    <li>Add User</li>
-                    <li>Edit User</li>
-                    <li>Delete User</li>
-                </ul>
-            </a>
-
-            <a class="content_manage" href="diseasedata.php">
-                <h3>Manage Diseases</h3>
-                <ul>
-                    <li>Add User</li>
-                    <li>Edit User</li>
-                    <li>Delete User</li>
-                </ul>
-            </a>
-
-            <a class="content_manage" href="symptomdata.php">
-                <h3>Manage Symptoms</h3>
-                <ul>
-                    <li>Add User</li>
-                    <li>Edit User</li>
-                    <li>Delete User</li>
-                </ul>
-            </a>
-
-            <a class="content_manage" href="reports.php">
-                <h3>Reports</h3>
-                <ul>
-                    <li>Generate Report</li>
-                    <li>View Reports</li>
-                </ul>
-            </a>
         </div>
     </div>
 </div>
+
+
 </body>
 </html>
+
+
+
+

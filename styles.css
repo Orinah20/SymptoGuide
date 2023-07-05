@@ -4,7 +4,6 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f1f1f1;
     margin: 0;
-    padding: 20px;
 }
 
 h2 {
@@ -56,3 +55,186 @@ input[type="submit"]:hover {
     margin-top: 10px;
 }
 
+/*Administrator*/
+.container{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.side_nav{
+    position: fixed;
+    background-color:cadetblue ;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.content{
+    position: relative;
+    left: 20%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.content_user{
+    padding: 1rem 0.5rem;
+    background-color: #b0efef;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content_user-left{
+    display: flex;
+}
+
+.content_user-left > div{
+    padding: 0 0.5rem;
+}
+
+.content_data{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.content_data > a{
+    padding: 0.5rem 5rem;
+}
+
+.content_data > a:hover{
+    background-color: #45a085;
+    color: white;
+}
+
+.content_manage{
+    background-color: #30323d;
+    border-radius: 1rem;
+    margin: 1rem;
+    color: #bebebe;
+    display: flex;
+    align-items: center;
+    width: 250px;
+    text-decoration: none;
+}
+
+/*User Data*/
+
+.content-data_user{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.content-data_user--header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.content-data_user table tbody tr:hover {
+    background-color: #bebebe;
+    cursor: pointer;
+}
+
+th{
+    background-color: #cccccc;
+    border-spacing: 0;
+}
+
+td{
+    text-align: center;
+}
+
+.content_data-container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    padding: 0 1rem;
+}
+
+/* Add this CSS code to your styles.css file */
+.nav-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #b0efef;
+    text-align: left;
+    margin: 0;
+}
+
+.nav-button:hover {
+    background-color: #427070;
+    color: white;
+    cursor: pointer;
+}
+
+.nav-button.active {
+    background-color: rgba(171, 95, 95, 0.94);
+    color: #e3e000;
+}
+
+.content_data-container--header{
+    display: flex;
+    align-items: center;
+}
+
+.back-button{
+    padding: 0.25rem;
+    margin: 0 0.25rem;
+}
+
+.back-button:hover{
+    background-color: #b0efef;
+    border-radius: 50%;
+    padding: 0.25rem;
+    margin: 0 0.25rem;
+}
+.edit_user{
+    display: flex;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.edit_user > label{
+    width: 30%;
+    margin: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+input[readonly]{
+    background-color: #eaeaea;
+    cursor: not-allowed;
+}
+
+.edit_user > div{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.edit_user-update{
+    background-color: #427070;
+}
+
+
+input[name="delete"]{
+    background-color: #a83e3e;
+    margin: 0 0.5rem;
+}
+
+input[name="delete"]:hover{
+    background-color: #7c3434;
+    margin: 0 0.5rem;
+}
