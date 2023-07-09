@@ -1,6 +1,7 @@
 <?php
-@include 'config.php';
-@include 'session.php';
+
+@include '../../config.php';
+@include '../../session.php';
 
 // Check if the user ID is provided in the URL
 if (isset($_GET['medical_id'])) {
@@ -37,26 +38,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 
-// Handle user deletion
-if (isset($_POST['delete'])) {
-    // Delete the user from the database
-    $deleteQuery = "DELETE FROM users WHERE medical_id = ?";
-    $stmt = mysqli_prepare($conn, $deleteQuery);
-    mysqli_stmt_bind_param($stmt, "s", $medicalId);
-    mysqli_stmt_execute($stmt);
-
-    // Redirect back to the user data page after deletion
-    header('Location: userdata.php');
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
 <html lang="">
 <head>
     <title>Admin Page</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <script src="../../script.js"></script>
 </head>
 <body>
 <div class="container">
@@ -66,7 +55,7 @@ if (isset($_POST['delete'])) {
                 <h2>SymptoGuide</h2>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'dashboard') echo 'active'; ?>"
-                            onclick="window.location.href='administrator.php'">
+                            onclick="window.location.href='../administrator.php'">
                         Dashboard
                     </button>
                 </div>
@@ -76,32 +65,32 @@ if (isset($_POST['delete'])) {
                     </button>
                 </div>
                 <div>
-                    <button class="nav-button <?php if ($activePage == 'patientdata') echo 'active'; ?>"
-                            onclick="window.location.href='patientdata.php'">Patients
+                    <button class="nav-button <?php if ($activePage == 'patientdata' || $activePage == 'editPatient' || $activePage == 'addPatient' ) echo 'active'; ?>"
+                            onclick="window.location.href='../Patient/patientdata.php'">Patients
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'diseasedata') echo 'active'; ?>"
-                            onclick="window.location.href='diseasedata.php'">Disease
+                            onclick="window.location.href='../Diseases/diseasedata.php'">Disease
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'symptomdata') echo 'active'; ?>"
-                            onclick="window.location.href='symptomdata.php'">Symptom
+                            onclick="window.location.href='../Symptoms/symptomdata.php'">Symptom
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'reports') echo 'active'; ?>"
-                            onclick="window.location.href='reports.php'">Reports
+                            onclick="window.location.href='../Reports/reports.php'">Reports
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'adminSettings') echo 'active'; ?>"
-                            onclick="window.location.href='adminSettings.php'">Settings
+                            onclick="window.location.href='../adminSettings.php'">Settings
                     </button>
                 </div>
                 <div>
-                    <button class="nav-button" onclick="window.location.href='logout.php'">Logout</button>
+                    <button class="nav-button" onclick="window.location.href='../../logout.php'">Logout</button>
                 </div>
             </div>
         </div>
@@ -119,12 +108,12 @@ if (isset($_POST['delete'])) {
             <div class="content_data-container">
                 <div class="content_data-container--header">
                     <a href="userdata.php" class="back-button">
-                        <img src="back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">
+                        <img src="../../back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">
                     </a>
                     <h2>Edit User</h2>
                 </div>
-                <form action="" method="POST" class="edit_user"
-                      onsubmit="return confirm('Are you sure you want to switch this user type?')" ;>
+                <form action="updateUser.php" method="POST" class="edit_user"
+                      onsubmit="return confirm('Are you sure you want to continue?')">
                     <label for="medical_id">Medical ID:
                         <input type="text" name="medical_id" value="<?php echo $row['medical_id']; ?>" readonly>
                     </label>
@@ -138,7 +127,7 @@ if (isset($_POST['delete'])) {
                     </label>
 
                     <label for="contact_number">Contact Number:
-                        <input type="text" name="user_type" value="<?php echo $row['contact_number']; ?>" readonly>
+                        <input type="text" name="contact_number" value="<?php echo $row['contact_number']; ?>" readonly>
                     </label>
 
                     <label for="address">Address:
@@ -154,29 +143,20 @@ if (isset($_POST['delete'])) {
                             <option value="Administrator" <?php if ($row['user_type'] == 'Administrator') echo 'selected'; ?>>
                                 Administrator
                             </option>
-                            <option value="User" <?php if ($row['user_type'] == 'User') echo 'selected'; ?>>User
+                            <option value="User" <?php if ($row['user_type'] == 'Users') echo 'selected'; ?>>User
                             </option>
                         </select>
                     </label>
-
-                    <div>
-                        <form action="" method="POST"
-                              onsubmit="return confirm('Are you sure you want to delete this user?');">
-                            <input type="submit" name="upadte" value="Update " class="edit_user-update">
-                            <input type="hidden" name="medical_id" value="<?php echo $row['medical_id']; ?>">
-                            <input type="submit" name="delete" value="Delete User" class="edit_user-delete">
-                        </form>
-                    </div>
-
+                    <input type="submit" name="update" value="Update" class="edit_user-update">
                 </form>
 
+                <form action="deleteUser.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                    <input type="hidden" name="medical_id" value="<?php echo $row['medical_id']; ?>">
+                    <input type="submit" name="delete" value="Delete User" class="edit_user-delete">
+                </form>
 
             </div>
         </div>
     </div>
 </div>
-
-
-</body>
-</html>
 

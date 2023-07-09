@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Add the user to the database using prepared statement
             $insertQuery = "INSERT INTO users (medical_id, user_type, name, email, password, contact_number, address, specialization, gender, date_of_birth, security_question, security_answer)
-            VALUES (?, 'User' ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            VALUES (?, 'Users' ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($conn, $insertQuery);
             mysqli_stmt_bind_param($stmt, "sssssssssss", $medicalId, $name, $email, $hashedPassword, $contactNumber, $address, $specialization, $gender, $dateOfBirth, $securityQuestion, $securityAnswer);
 
@@ -93,4 +93,4 @@ function isValidPasswordFormat($password) {
     $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/';
     return preg_match($pattern, $password);
 }
-?>
+

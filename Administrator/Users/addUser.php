@@ -1,6 +1,7 @@
 <?php
-include 'config.php';
-include 'session.php';
+
+@include '../../config.php';
+@include '../../session.php';
 
 $userType = "";
 $name = "";
@@ -43,7 +44,7 @@ function addUser($userType, $name, $email, $contactNumber, $address, $specializa
 
     // Execute the statement
     if ($stmt->execute()) {
-        // User added successfully
+        // Users added successfully
     } else {
         // Error occurred while adding user
         echo "Error adding user: " . $stmt->error;
@@ -103,14 +104,15 @@ function generateSecurityAnswer()
     }
     return $answer;
 }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="">
 <head>
     <title>Admin Page</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <script src="../../script.js"></script>
 </head>
 <body>
 <div class="container">
@@ -120,7 +122,7 @@ function generateSecurityAnswer()
                 <h2>SymptoGuide</h2>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'dashboard') echo 'active'; ?>"
-                            onclick="window.location.href='administrator.php'">
+                            onclick="window.location.href='../administrator.php'">
                         Dashboard
                     </button>
                 </div>
@@ -130,32 +132,32 @@ function generateSecurityAnswer()
                     </button>
                 </div>
                 <div>
-                    <button class="nav-button <?php if ($activePage == 'patientdata') echo 'active'; ?>"
-                            onclick="window.location.href='patientdata.php'">Patients
+                    <button class="nav-button <?php if ($activePage == 'patientdata' || $activePage == 'editPatient' || $activePage == 'addPatient' ) echo 'active'; ?>"
+                            onclick="window.location.href='../Patient/patientdata.php'">Patients
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'diseasedata') echo 'active'; ?>"
-                            onclick="window.location.href='diseasedata.php'">Disease
+                            onclick="window.location.href='../Diseases/diseasedata.php'">Disease
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'symptomdata') echo 'active'; ?>"
-                            onclick="window.location.href='symptomdata.php'">Symptom
+                            onclick="window.location.href='../Symptoms/symptomdata.php'">Symptom
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'reports') echo 'active'; ?>"
-                            onclick="window.location.href='reports.php'">Reports
+                            onclick="window.location.href='../Reports/reports.php'">Reports
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'adminSettings') echo 'active'; ?>"
-                            onclick="window.location.href='adminSettings.php'">Settings
+                            onclick="window.location.href='../adminSettings.php'">Settings
                     </button>
                 </div>
                 <div>
-                    <button class="nav-button" onclick="window.location.href='logout.php'">Logout</button>
+                    <button class="nav-button" onclick="window.location.href='../../logout.php'">Logout</button>
                 </div>
             </div>
         </div>
@@ -170,70 +172,68 @@ function generateSecurityAnswer()
         </div>
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
         <div class="content_data">
-            <div class="container">
-                <div class="login-form">
-                    <h2>Add User</h2>
-                    <form action="addUser.php" method="POST">
-                        <!-- Form fields -->
-                        <label for="user_type">User Type:
-                            <select name="user_type" required>
-                                <option value="" selected disabled>Select user type</option>
-                                <option value="administrator">Administrator</option>
-                                <option value="user">User</option>
-                            </select>
-                        </label>
+            <div class="content_data-header">
+                <a href="userdata.php" class="back-button">
+                    <img src="../../back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">
+                </a>
+                <h3>Add User</h3>
+            </div>
+            <div class="addUser_form">
+                <form action="addUser.php" method="POST" class="addUser">
+                    <!-- Form fields -->
+                    <label for="user_type">User Type:
+                        <select name="user_type" required>
+                            <option value="" selected disabled>Select user type</option>
+                            <option value="administrator">Administrator</option>
+                            <option value="user">User</option>
+                        </select>
+                    </label>
 
-                        <label for="name">Name:
-                            <input type="text" name="name" placeholder="Name" required>
-                        </label>
-                        <label for="email">Email:
-                            <input type="email" name="email" placeholder="Email" required>
-                        </label>
-                        <label for="contact_number">Contact Number:
-                            <input type="text" name="contact_number" placeholder="Contact Number" required>
-                        </label>
-                        <label for="address">Address:
-                            <input type="text" name="address" placeholder="Address" required>
-                        </label>
-                        <label for="specialization">Specialization:
-                            <select name="specialization" required>
-                                <option value="" selected disabled>Select specialization</option>
-                                <option value="Pulmonology">Pulmonology - Specializes in respiratory diseases</option>
-                            </select>
-                        </label>
-                        <input type="submit" value="Add">
-                    </form>
-
-                    <!-- Details displayed after the form -->
-                    <div class="form-details">
-                        <?php
-                        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                            echo "<h3>Details</h3>";
-                            echo "<p>Medical ID: $medicalId</p>";
-                            echo "<p>Password: $password</p>";
-                            echo "<p>User Type: $userType</p>";
-                            echo "<p>Name: $name</p>";
-                            echo "<p>Email: $email</p>";
-                            echo "<p>Contact Number: $contactNumber</p>";
-                            echo "<p>Address: $address</p>";
-                            echo "<p>Specialization: $specialization</p>";
-
-                            // Generate a CSV file with user details for download
-                            $filename = "user_details.csv";
-                            $file = fopen($filename, "w");
-                            $csvData = array(
-                                $medicalId,
-                                $password,
-                            );
-                            fputcsv($file, $csvData);
-                            fclose($file);
-
-                            // Display the download link for the CSV file
-                            echo "<p><a href='$filename' download>Download User Details</a></p>";
-                        }
-                        ?>
+                    <label for="name">Name:
+                        <input type="text" name="name" placeholder="Name" required>
+                    </label>
+                    <label for="email">Email:
+                        <input type="email" name="email" placeholder="Email" required>
+                    </label>
+                    <label for="contact_number">Contact Number:
+                        <input type="text" name="contact_number" placeholder="Contact Number" required>
+                    </label>
+                    <label for="address">Address:
+                        <input type="text" name="address" placeholder="Address" required>
+                    </label>
+                    <label for="specialization">Specialization:
+                        <select name="specialization" required>
+                            <option value="" selected disabled>Select specialization</option>
+                            <option value="Pulmonology">Pulmonology - Specializes in respiratory diseases</option>
+                        </select>
+                    </label>
+                    <div>
+                        <input type="submit" name="add" value="Add">
                     </div>
+                </form>
 
+                <!-- Details displayed after the form -->
+                <div class="form-details">
+                   <h3><u>Generated Details appear here</u></h3>
+                    <?php
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        echo "<p>Generated Medical ID: <b> $medicalId </b></p>";
+                        echo "<p>Generated Password: <b> $password </b></p>";
+
+                        // Generate a CSV file with user details for download
+                        $filename = "user_details.csv";
+                        $file = fopen($filename, "w");
+                        $csvData = array(
+                            $medicalId,
+                            $password,
+                        );
+                        fputcsv($file, $csvData);
+                        fclose($file);
+
+                        // Display the download link for the CSV file
+                        echo "<p><a href='$filename' download>Download Generated Medical ID and Password</a></p>";
+                    }
+                    ?>
                 </div>
             </div>
         </div>

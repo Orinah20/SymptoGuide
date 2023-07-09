@@ -25,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Redirect to the user's page
             if ($row['user_type'] == 'Administrator') {
-                header('Location: administrator.php');
+                header("Location: /SymptoGuide/Administrator/administrator.php");
             } else {
-                header('Location: user.php');
+                header('Location: /SymptoGuide//User/user.php');
             }
             exit();
         }

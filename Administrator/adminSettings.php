@@ -1,15 +1,15 @@
 <?php
 
-@include 'config.php';
-@include 'session.php';
+@include '../config.php';
+@include '../session.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="">
 <head>
     <title>Admin Page</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <script src="../script.js"></script>
 </head>
 <body>
 <div class="container">
@@ -19,44 +19,44 @@
                 <h2>SymptoGuide</h2>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'dashboard') echo 'active'; ?>"
-                            onclick="window.location.href='administrator.php'">
-                        Dashboard
+                            onclick="window.location.href='/SymptoGuide/Administrator/administrator.php' ">Dashboard
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'userdata' || $activePage == 'editUser' || $activePage == 'addUser') echo 'active'; ?>"
-                            onclick="window.location.href='userdata.php'">Users
+                            onclick="window.location.href='/SymptoGuide/Administrator/Users/userdata.php'">Users
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'patientdata') echo 'active'; ?>"
-                            onclick="window.location.href='patientdata.php'">Patients
+                            onclick="window.location.href='/SymptoGuide/Administrator/Patient/patientdata.php'">Patients
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'diseasedata') echo 'active'; ?>"
-                            onclick="window.location.href='diseasedata.php'">Disease
+                            onclick="window.location.href='/SymptoGuide/Administrator/Diseases/diseasedata.php'">Disease
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'symptomdata') echo 'active'; ?>"
-                            onclick="window.location.href='symptomdata.php'">Symptom
+                            onclick="window.location.href='/SymptoGuide/Administrator/Symptoms/symptomdata.php'">Symptom
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'reports') echo 'active'; ?>"
-                            onclick="window.location.href='reports.php'">Reports
+                            onclick="window.location.href='/SymptoGuide/Administrator/Reports/reports.php'">Reports
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'adminSettings') echo 'active'; ?>"
-                            onclick="window.location.href='adminSettings.php'">Settings
+                            onclick="window.location.href='/SymptoGuide/Administrator/adminSettings.php'">Settings
                     </button>
                 </div>
                 <div>
-                    <button class="nav-button" onclick="window.location.href='logout.php'">Logout</button>
+                    <button class="nav-button" onclick="window.location.href='../logout.php'">Logout</button>
                 </div>
             </div>
+
         </div>
 
     </div>
@@ -78,6 +78,7 @@
 
 </body>
 </html>
+
 
 
 

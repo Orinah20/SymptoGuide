@@ -1,6 +1,6 @@
 // Function to display the remaining time
 function displayRemainingTime() {
-    const sessionExpireTime = 3600; // Time limit in seconds (1 hour)
+    const sessionExpireTime = 3600; // Time limit in seconds
     let remainingTime = sessionExpireTime; // Initial remaining time in seconds
 
     const timerElement = document.getElementById('timer'); // Get the timer element
@@ -25,7 +25,7 @@ function displayRemainingTime() {
             countdown = setTimeout(updateTimer, 1000);
         } else {
             // Session expired, redirect to logout page
-            window.location.href = 'logout.php';
+            window.location.href = '/SymptoGuide/logout.php';
         }
     }
 
