@@ -77,7 +77,7 @@ $result = mysqli_query($conn, $selectQuery);
         <div class="content_data">
             <div class="content-data_user">
                 <div class="content-data_user--header">
-                    <h2>Patient Data</h2>
+                    <h2>Disease Data</h2>
                     <div>
                         <a href="addDisease.php">
                             <button>Add Disease</button>

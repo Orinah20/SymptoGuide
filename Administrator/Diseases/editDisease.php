@@ -71,8 +71,8 @@ function sanitizeInput($input)
     $input = htmlspecialchars($input);
     return $input;
 }
-?>
 
+?>
 
 
 <!DOCTYPE html>
@@ -80,11 +80,12 @@ function sanitizeInput($input)
 <head>
     <title>Admin Page</title>
     <link rel="stylesheet" type="text/css" href="../../styles.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Initialize the Select2 plugin
             $('#symptoms').select2();
         });
@@ -108,13 +109,13 @@ function sanitizeInput($input)
                     </button>
                 </div>
                 <div>
-                    <button class="nav-button <?php if ($activePage == 'patientdata' || $activePage == 'editPatient' || $activePage == 'addPatient' ) echo 'active'; ?>"
-                            onclick="window.location.href='patientdata.php'">Patients
+                    <button class="nav-button <?php if ($activePage == 'patientdata' || $activePage == 'editPatient' || $activePage == 'addPatient') echo 'active'; ?>"
+                            onclick="window.location.href='../Patient/patientdata.php'">Patients
                     </button>
                 </div>
                 <div>
                     <button class="nav-button <?php if ($activePage == 'diseasedata' || $activePage == 'editDisease' || $activePage == 'addDisease') echo 'active'; ?>"
-                            onclick="window.location.href='../Diseases/diseasedata.php'">Disease
+                            onclick="window.location.href='diseasedata.php'">Disease
                     </button>
                 </div>
                 <div>
@@ -156,47 +157,54 @@ function sanitizeInput($input)
                     </a>
                     <h2>Edit Disease</h2>
                 </div>
-                <form action="updateDisease.php" method="POST" class="edit_disease" onsubmit="return confirm('Are you sure you want to continue?')">
-                    <label for="disease_id">Disease ID:
-                        <input type="text" name="disease_id" value="<?php echo $row['disease_id']; ?>" readonly>
-                    </label>
+                <div class="editDisease_form">
+                    <form action="updateDisease.php" method="POST" class="edit_disease"
+                          onsubmit="return confirm('Are you sure you want to continue?')">
+                        <label for="disease_id">Disease ID:
+                            <input type="text" name="disease_id" value="<?php echo $row['disease_id']; ?>" readonly>
+                        </label>
 
-                    <label for="disease_name">Disease Name:
-                        <input type="text" name="disease_name" value="<?php echo $row['disease_name']; ?>">
-                    </label>
+                        <label for="disease_name">Disease Name:
+                            <input type="text" name="disease_name" value="<?php echo $row['disease_name']; ?>">
+                        </label>
 
-                    <label for="disease_description">Disease Description:
-                        <textarea name="disease_description"><?php echo $row['disease_description']; ?></textarea>
-                    </label>
+                        <label for="disease_description">Disease Description:
+                            <textarea name="disease_description"><?php echo $row['disease_description']; ?></textarea>
+                        </label>
 
-                    <label for="symptoms">Select Symptoms:</label>
-                    <select name="symptoms[]" multiple id="symptoms">
-                        <?php
-                        // Retrieve all symptoms
-                        $symptomsQuery = "SELECT * FROM symptoms";
-                        $symptomsResult = mysqli_query($conn, $symptomsQuery);
+                        <label for="symptoms">Select Symptoms:
+                            <select name="symptoms[]" multiple id="symptoms">
+                                <?php
+                                // Retrieve all symptoms
+                                $symptomsQuery = "SELECT * FROM symptoms";
+                                $symptomsResult = mysqli_query($conn, $symptomsQuery);
 
-                        // Iterate over the symptoms and generate the options
-                        while ($symptom = mysqli_fetch_assoc($symptomsResult)) {
-                            $symptomId = $symptom['symptom_id'];
-                            $symptomName = $symptom['symptom_name'];
-                            $isSelected = in_array($symptomId, array_column($selectedSymptoms, 'symptom_id'));
+                                // Iterate over the symptoms and generate the options
+                                while ($symptom = mysqli_fetch_assoc($symptomsResult)) {
+                                    $symptomId = $symptom['symptom_id'];
+                                    $symptomName = $symptom['symptom_name'];
+                                    $isSelected = in_array($symptomId, array_column($selectedSymptoms, 'symptom_id'));
 
-                            echo '<option value="' . $symptomId . '" ' . ($isSelected ? 'selected' : '') . '>' . $symptomName . '</option>';
-                        }
-                        ?>
-                    </select>
+                                    echo '<option value="' . $symptomId . '" ' . ($isSelected ? 'selected' : '') . '>' . $symptomName . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </label>
 
-                    <input type="submit" name="update" value="Update" class="edit_disease-update">
-                </form>
-                <form action="deleteDisease.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this disease?');">
-                    <input type="hidden" name="disease_id" value="<?php echo $row['disease_id']; ?>">
-                    <input type="submit" name="delete" value="Delete Disease" class="edit_disease-delete">
-                </form>
+                        <div>
+                        <input type="submit" name="update" value="Update" class="edit_disease-update">
+                        </div>
+
+                    </form>
+                    <form action="deleteDisease.php" method="POST"
+                          onsubmit="return confirm('Are you sure you want to delete this disease?');">
+                        <input type="hidden" name="disease_id" value="<?php echo $row['disease_id']; ?>">
+                        <input type="submit" name="delete" value="Delete Disease" class="edit_disease-delete">
+                    </form>
+
+                </div>
             </div>
         </div>
-        <!-- ... remaining code ... -->
-
     </div>
 </div>
 

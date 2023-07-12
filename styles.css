@@ -263,6 +263,7 @@ input[name="delete"]:hover{
 .content_data-header{
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 input[name="add"]{
@@ -291,3 +292,131 @@ input[name="add"]:hover{
     text-align: center;
     height: max-content;
 }
+
+/* Add Disease */
+
+.addDisease_form{
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
+
+.addDisease{
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    align-items: flex-end;
+}
+
+.addDisease > label{
+    width: 100%;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.addDisease > div{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0.5rem;
+}
+
+/* Add Symptom */
+
+.addSymptom_form{
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
+
+.addSymptom{
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    align-items: flex-end;
+}
+
+.addSymptom > label{
+    width: 100%;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.addSymptom > div{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0.5rem;
+}
+
+/*Edit Disease*/
+
+.edit_disease{
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    align-items: flex-end;
+}
+
+.edit_disease > label{
+    width: 100%;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+textarea[name="disease_description"]{
+    max-width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.edit_disease > div{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0.5rem;
+}
+
+/*Edit Symptom*/
+.edit_symptom{
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    align-items: flex-end;
+}
+
+.edit_symptom > label{
+    width: 100%;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+textarea[name="symptom_description"]{
+    max-width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.edit_symptom > div{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0.5rem;
+}
+

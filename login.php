@@ -19,15 +19,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($password, $row['password'])) {
 
             // Set the user session data
-            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_id'] = $row['medical_id'];
             $_SESSION['user_name'] = $row['name'];
             $_SESSION['user_type'] = $row['user_type'];
+
+            // Debugging: Print the session variables
+            echo '<pre>';
+            print_r($_SESSION);
+            echo '</pre>';
 
             // Redirect to the user's page
             if ($row['user_type'] == 'Administrator') {
                 header("Location: /SymptoGuide/Administrator/administrator.php");
             } else {
-                header('Location: /SymptoGuide//User/user.php');
+                header('Location: /SymptoGuide/User/user.php');
             }
             exit();
         }

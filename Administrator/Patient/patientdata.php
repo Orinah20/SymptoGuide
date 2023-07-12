@@ -88,7 +88,6 @@ $result = mysqli_query($conn, $selectQuery);
                 <table id="PatientData">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Patient ID</th>
                         <th>Name</th>
                         <th>Date of Birth</th>
@@ -101,7 +100,6 @@ $result = mysqli_query($conn, $selectQuery);
                     <?php
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<tr onclick="window.location.href=\'editPatient.php?patient_id=' . $row['patient_id'] . '\';">';
-                        echo '<td>' . $row['id'] . '</td>';
                         echo '<td>' . $row['patient_id'] . '</td>';
                         echo '<td>' . $row['name'] . '</td>';
                         echo '<td>' . $row['date_of_birth'] . '</td>';

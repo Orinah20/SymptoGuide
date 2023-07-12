@@ -46,6 +46,7 @@ function sanitizeInput($input)
     $input = htmlspecialchars($input);
     return $input;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +74,7 @@ function sanitizeInput($input)
                     </button>
                 </div>
                 <div>
-                    <button class="nav-button <?php if ($activePage == 'patientdata' || $activePage == 'editPatient' || $activePage == 'addPatient' ) echo 'active'; ?>"
+                    <button class="nav-button <?php if ($activePage == 'patientdata' || $activePage == 'editPatient' || $activePage == 'addPatient') echo 'active'; ?>"
                             onclick="window.location.href='patientdata.php'">Patients
                     </button>
                 </div>
@@ -112,7 +113,6 @@ function sanitizeInput($input)
             </div>
         </div>
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
-        <!-- ... existing code ... -->
         <div class="content_data">
             <div class="content_data-container">
                 <div class="content_data-container--header">
@@ -121,29 +121,34 @@ function sanitizeInput($input)
                     </a>
                     <h2>Edit Symptom</h2>
                 </div>
-                <form action="updateSymptom.php" method="POST" class="edit_symptom" onsubmit="return confirm('Are you sure you want to continue?')">
-                    <label for="symptom_id">Symptom ID:
-                        <input type="text" name="symptom_id" value="<?php echo $row['symptom_id']; ?>" readonly>
-                    </label>
+                <div>
+                    <form action="updateSymptom.php" method="POST" class="edit_symptom"
+                          onsubmit="return confirm('Are you sure you want to continue?')">
+                        <label for="symptom_id">Symptom ID:
+                            <input type="text" name="symptom_id" value="<?php echo $row['symptom_id']; ?>" readonly>
+                        </label>
 
-                    <label for="symptom_name">Symptom Name:
-                        <input type="text" name="symptom_name" value="<?php echo $row['symptom_name']; ?>">
-                    </label>
+                        <label for="symptom_name">Symptom Name:
+                            <input type="text" name="symptom_name" value="<?php echo $row['symptom_name']; ?>">
+                        </label>
 
-                    <label for="symptom_description">Symptom Description:
-                        <textarea name="symptom_description"><?php echo $row['symptom_description']; ?></textarea>
-                    </label>
+                        <label for="symptom_description">Symptom Description:
+                            <textarea name="symptom_description"><?php echo $row['symptom_description']; ?></textarea>
+                        </label>
 
-                    <input type="submit" name="update" value="Update" class="edit_symptom-update">
-                </form>
+                        <div>
+                            <input type="submit" name="update" value="Update" class="edit_symptom-update">
+                        </div>
+                    </form>
 
-                <form action="deleteSymptom.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this symptom?');">
-                    <input type="hidden" name="symptom_id" value="<?php echo $row['symptom_id']; ?>">
-                    <input type="submit" name="delete" value="Delete Symptom" class="edit_symptom-delete">
-                </form>
+                    <form action="deleteSymptom.php" method="POST"
+                          onsubmit="return confirm('Are you sure you want to delete this symptom?');">
+                        <input type="hidden" name="symptom_id" value="<?php echo $row['symptom_id']; ?>">
+                        <input type="submit" name="delete" value="Delete Symptom" class="edit_symptom-delete">
+                    </form>
+                </div>
             </div>
         </div>
-        <!-- ... remaining code ... -->
 
     </div>
 </div>

@@ -117,13 +117,14 @@ function sanitizeInput($input)
                 </a>
                 <h3>Add Symptom</h3>
             </div>
-            <div class="addUser_form">
+            <div class="addSymptom_form">
                 <form action="" method="POST" class="addSymptom">
                     <label for="symptom_name">Symptom Name:
                         <input type="text" name="symptom_name" placeholder="Symptom Name" required>
                     </label>
+
                     <label for="symptom_description">Symptom Description:
-                        <textarea name="symptom_description" placeholder="Symptom Description" required></textarea>
+                        <input type="text" name="symptom_description" placeholder="Symptom Description" required>
                     </label>
 
                     <div>

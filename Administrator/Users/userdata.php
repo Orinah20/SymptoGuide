@@ -90,7 +90,6 @@ $result = mysqli_query($conn, $selectQuery);
                 <table id="userData">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Medical ID</th>
                         <th>User Type</th>
                         <th>Name</th>
@@ -104,7 +103,6 @@ $result = mysqli_query($conn, $selectQuery);
                     <?php
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<tr onclick="window.location.href=\'editUser.php?medical_id=' . $row['medical_id'] . '\';">';
-                        echo '<td>' . $row['id'] . '</td>';
                         echo '<td>' . $row['medical_id'] . '</td>';
                         echo '<td>' . $row['user_type'] . '</td>';
                         echo '<td>' . $row['name'] . '</td>';
