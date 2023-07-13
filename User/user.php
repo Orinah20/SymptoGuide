@@ -1,6 +1,7 @@
 <?php
 @include '../config.php';
 @include '../session.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -12,8 +13,13 @@
 </head>
 <body>
 <div class="container">
-    <h1>Welcome, <?php echo $_SESSION['user_name']; ?>!</h1>
-    <p>You have successfully logged in as a user.</p>
+    <div class="container_header">
+        <h2>SymptoGuide</h2>
+        <div class="content_header-left">
+        <div><?php echo $_SESSION['user_name']; ?></div>
+        <a href="../logout.php">Logout</a>
+        </div>
+    </div>
 
     <div class="content">
         <h2>Diagnosis System</h2>
@@ -25,9 +31,6 @@
         </div>
     </div>
 
-    <div class="footer">
-        <a href="../logout.php">Logout</a>
-    </div>
 
     <!-- Add a span element to display the timer -->
     <p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p>

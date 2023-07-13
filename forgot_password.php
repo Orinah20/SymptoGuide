@@ -38,20 +38,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <div class="container">
     <div class="login-form">
-        <h2>Forgot Password</h2>
         <?php if (isset($error)) { ?>
             <p class="error-message"><?php echo $error; ?></p>
         <?php } ?>
-        <form action="forgot_password.php" method="POST">
-            <input type="text" name="medical_id" placeholder="Medical ID" style="text-transform: uppercase;" required>
-            <select name="security_question" required>
-                <option value="">Select a security question</option>
-                <option value="mother_maiden_name">What is your mother's maiden name?</option>
-                <option value="pet_name">What is your pet's name?</option>
-                <option value="first_school">What was the name of your first school?</option>
-            </select>
-            <input type="text" name="security_answer" placeholder="Security Answer" required>
-            <input type="submit" value="Reset Password">
+        <form action="forgot_password.php" method="POST" class="forgotPassword">
+            <h2>Forgot Password</h2>
+            <label for="medical_id"> Medical Id
+                <input type="text" name="medical_id" placeholder="Medical ID" style="text-transform: uppercase;" required>
+            </label>
+            <label for="security_question">Security Question
+                <select name="security_question" required>
+                    <option value="">Select a security question</option>
+                    <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                    <option value="What is your pet's name?">What is your pet's name?</option>
+                    <option value="What was the name of your first school?">What was the name of your first school?</option>
+                </select>
+            </label>
+            <label for="security_answer"> Security Answer
+                <input type="text" name="security_answer" placeholder="Security Answer" required>
+            </label>
+
+            <div>
+                <input type="submit" value="Reset Password">
+            </div>
             <p><a href="login.php">Back to Login</a></p>
         </form>
     </div>

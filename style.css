@@ -3,7 +3,6 @@ html, body, div, span, h1, h2, p, a {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
     font: inherit;
     vertical-align: baseline;
 }
@@ -14,12 +13,6 @@ body {
     background-color: #f7f7f7;
     color: #333;
     line-height: 1.5;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
 }
 
 h1 {
@@ -86,3 +79,53 @@ input[type="submit"] {
     cursor: pointer;
 }
 
+.container{
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.container_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem;
+    background-color: #45a085;
+}
+
+.content_header-left{
+    display: flex;
+    margin: 0.5rem 0;
+}
+
+.content_header-left > a{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.content{
+    padding: 2rem;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.new_diagnosis{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.patient_data{
+    background-color: #eaeaea;
+    width: 100%;
+    padding: 1rem 0 1rem 2rem;
+    border-radius: 0.25rem;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.create-patient{
+    width: 50%;
+    margin: 0 auto;
+}

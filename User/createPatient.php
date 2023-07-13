@@ -63,6 +63,13 @@ function generatePatientId() {
 </head>
 <body>
 <div class="container">
+    <div class="container_header">
+        <h2>SymptoGuide</h2>
+        <div class="content_header-left">
+            <div><?php echo $_SESSION['user_name']; ?></div>
+            <a href="../logout.php">Logout</a>
+        </div>
+    </div>
     <div class="content">
         <div class="content_user">
             <div class="content_user-left">

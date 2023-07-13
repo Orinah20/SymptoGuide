@@ -24,6 +24,7 @@ $stmt->close();
     <title>View Diagnosis</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script src="../script.js"></script>
     <style>
         #diagnosisTable tbody tr:hover {
             background-color: #f5f5f5;
@@ -32,12 +33,15 @@ $stmt->close();
 </head>
 <body>
 <div class="container">
-    <div class="content">
-        <div class="content_user">
-            <div class="content_user-left">
-                <div><b><?php echo $_SESSION['user_name']; ?></b></div>
-            </div>
+    <div class="container_header">
+        <h2>SymptoGuide</h2>
+        <div class="content_header-left">
+            <div><?php echo $_SESSION['user_name']; ?></div>
+            <a href="../logout.php">Logout</a>
         </div>
+    </div>
+
+    <div class="content">
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
         <div class="content_data">
             <div class="content_data-header">

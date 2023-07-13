@@ -161,16 +161,18 @@ function getDiseaseId($diseaseName)
 <head>
     <title>Diagnosis Success</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
+    <script src="../script.js"></script>
 </head>
 <body>
 <div class="container">
-    <div class="content_data-header">
-        <div class="button-container">
-            <button class="retry-button" onclick="window.location.href='new_diagnosis.php'">New Diagnosis</button>
-            <button class="retry-button" onclick="window.location.href='diagnosis.php'">Retry Diagnosis</button>
-            <button class="return-button" onclick="window.location.href='user.php'">Return to User Page</button>
+    <div class="container_header">
+        <h2>SymptoGuide</h2>
+        <div class="content_header-left">
+            <div><?php echo $_SESSION['user_name']; ?></div>
+            <a href="../logout.php">Logout</a>
         </div>
     </div>
+
     <div class="diagnosis-results">
         <h2>Disease Probabilities</h2>
         <table>
@@ -186,6 +188,15 @@ function getDiseaseId($diseaseName)
             <?php endforeach; ?>
         </table>
     </div>
+
+    <div class="content_data-header">
+        <div class="button-container">
+            <button class="retry-button" onclick="window.location.href='new_diagnosis.php'">New Diagnosis</button>
+            <button class="retry-button" onclick="window.location.href='diagnosis.php'">Retry Diagnosis</button>
+            <button class="return-button" onclick="window.location.href='user.php'">Return to User Page</button>
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

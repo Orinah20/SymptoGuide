@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validate form data
     if ($newPassword !== $confirmPassword) {
-        $error = 'Passwords do not match.';
+        echo '<script>alert("Passwords do not match.");</script>';
     } else {
         // Hash the new password
         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
@@ -26,10 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (mysqli_query($conn, $updateQuery)) {
             // Password reset successful, remove medical ID from session and redirect to login page
             unset($_SESSION['medical_id']);
-            header('Location: login.php');
+            echo '<script>alert("Password reset successful. Please login with your new password.");</script>';
+            echo '<script>window.location.href = "login.php";</script>';
             exit();
         } else {
-            $error = 'Failed to reset password. Please try again later.';
+            echo '<script>alert("Failed to reset password. Please try again later.");</script>';
         }
     }
 }
@@ -44,14 +45,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <div class="container">
     <div class="login-form">
-        <h2>Reset Password</h2>
-        <?php if (isset($error)) { ?>
-            <p class="error-message"><?php echo $error; ?></p>
-        <?php } ?>
-        <form action="reset_password.php" method="POST">
-            <input type="password" name="new_password" placeholder="New Password" required>
-            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-            <input type="submit" value="Reset Password">
+        <form action="reset_password.php" method="POST" class="resetPassword">
+            <h2>Reset Password</h2>
+            <label for="new_password">New Password
+                <input type="password" name="new_password" placeholder="New Password" required>
+            </label>
+            <label for="confirm_password">Confirm Password
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            </label>
+            <div>
+                <input type="submit" value="Reset Password">
+            </div>
+            <p><a href="login.php">Back to Login</a></p>
         </form>
     </div>
 </div>

@@ -33,6 +33,7 @@ if (isset($_GET['patient_id'])) {
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="../script.js"></script>
     <script>
         $(document).ready(function() {
             // Initialize the Select2 plugin
@@ -42,6 +43,13 @@ if (isset($_GET['patient_id'])) {
 </head>
 <body>
 <div class="container">
+    <div class="container_header">
+        <h2>SymptoGuide</h2>
+        <div class="content_header-left">
+            <div><?php echo $_SESSION['user_name']; ?></div>
+            <a href="../logout.php">Logout</a>
+        </div>
+    </div>
     <div class="content_data-header">
         <a href="new_diagnosis.php" class="back-button">
             <img src="../back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">

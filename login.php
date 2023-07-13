@@ -23,11 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_name'] = $row['name'];
             $_SESSION['user_type'] = $row['user_type'];
 
-            // Debugging: Print the session variables
-            echo '<pre>';
-            print_r($_SESSION);
-            echo '</pre>';
-
             // Redirect to the user's page
             if ($row['user_type'] == 'Administrator') {
                 header("Location: /SymptoGuide/Administrator/administrator.php");
@@ -35,23 +30,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: /SymptoGuide/User/user.php');
             }
             exit();
+        } else {
+            // Password error
+            $error = 'Incorrect Medical ID or Password!';
+            header("Location: login.php?error=" . urlencode($error) . "&password_error=1");
+            exit();
         }
     } else {
+        // Medical ID error
         $error = 'Incorrect Medical ID or Password!';
+        header("Location: login.php?error=" . urlencode($error) . "&medical_id_error=1");
+        exit();
     }
-
-    // Redirect back to the login page with an error message
-    header("Location: login.php?error=" . urlencode($error));
-    exit();
 }
 
 // Function to sanitize user inputs
-function sanitizeInput($input) {
+function sanitizeInput($input)
+{
     $input = trim($input);
     $input = stripslashes($input);
     $input = htmlspecialchars($input);
     return $input;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -64,25 +65,39 @@ function sanitizeInput($input) {
 <body>
 <div class="container">
     <div class="login-form">
-        <h2>Login</h2>
-        <form action="login.php" method="POST">
 
+        <form action="login.php" method="POST" class="login">
+            <h2>Login</h2>
             <label for="medical_id"> Medical ID:
-                <input type="text" name="medical_id" placeholder="Medical ID" style="text-transform: uppercase;" required>
+                <input type="text" name="medical_id" placeholder="Medical ID" style="text-transform: uppercase;"
+                       required>
             </label>
 
             <label for="password"> Password:
                 <input type="password" name="password" id="password" placeholder="Password" required>
-                <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">Show Password
+                <div class="showPassword">
+                    <label for="show_password">
+                    <input type="checkbox" name="show_password" id="showPassword" onchange="togglePasswordVisibility()">
+                        Show Password
+                    </label>
+                </div>
             </label>
 
-            <input type="submit" value="Login">
+            <div>
+                <input type="submit" value="Login">
+            </div>
+
             <p>New User? <a href="registration.php">Register Now</a></p>
             <p><a href="forgot_password.php">Forgot Password?</a></p>
+
             <?php
-            if (isset($_GET['error'])) {
+            if (isset($_GET['password_error'])) {
+                echo '<script>alert("Incorrect Medical ID or Password!");</script>';
+            } elseif (isset($_GET['medical_id_error'])) {
+                echo '<script>alert("Incorrect Medical ID or Password!");</script>';
+            } elseif (isset($_GET['error'])) {
                 $error = $_GET['error'];
-                echo '<p class="error-message">' . $error . '</p>';
+                echo '<script>alert("' . $error . '");</script>';
             }
             ?>
         </form>
