@@ -1,7 +1,58 @@
 <?php
-
 @include '../config.php';
 @include '../session.php';
+
+// Function to retrieve admin data from the database
+function getAdminData($adminId) {
+    global $conn;
+
+    // Prepare the SQL statement
+    $stmt = $conn->prepare("SELECT * FROM users WHERE medical_id = ?");
+    $stmt->bind_param("i", $adminId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Fetch the admin data
+    $adminData = $result->fetch_assoc();
+
+    // Close the statement
+    $stmt->close();
+
+    // Return the admin data
+    return $adminData;
+}
+
+// Function to update admin data in the database
+function updateAdminData($adminId, $name, $email, $contactNumber, $specialization, $gender) {
+    global $conn;
+
+    // Prepare the SQL statement
+    $stmt = $conn->prepare("UPDATE users SET name = ?, email = ?, contact_number = ?, specialization = ?, gender = ? WHERE medical_id = ?");
+    $stmt->bind_param("sssssi", $name, $email, $contactNumber, $specialization, $gender, $adminId);
+    $stmt->execute();
+
+    // Close the statement
+    $stmt->close();
+}
+
+// Retrieve the current values of the administrator from the users table
+$adminId = $_SESSION['user_id']; // Assuming the admin's user ID is stored in the session
+$adminData = getAdminData($adminId);
+
+// Check if the form is submitted for updating admin settings
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $contactNumber = $_POST['contact_number'];
+    $specialization = $_POST['specialization'];
+    $gender = $_POST['gender'];
+
+    // Update admin data in the database
+    updateAdminData($adminId, $name, $email, $contactNumber, $specialization, $gender);
+
+    // Refresh the admin data
+    $adminData = getAdminData($adminId);
+}
 ?>
 
 <!DOCTYPE html>
@@ -69,15 +120,49 @@
             </div>
         </div>
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
-        <div class="content_data">
 
+        <div class="content_data">
+            <h2>Admin Settings</h2>
+            <div>
+                <form method="POST" action="" >
+                    <div>
+                        <label for="name">Medical Id:</label>
+                        <input type="text" name="medical_id" id="medical_id" value="<?php echo $adminData['medical_id']; ?>" readonly>
+                    </div>
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" value="<?php echo $adminData['name']; ?>">
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" value="<?php echo $adminData['email']; ?>">
+                    </div>
+                    <div>
+                        <label for="contact_number">Contact Number:</label>
+                        <input type="text" name="contact_number" id="contact_number" value="<?php echo $adminData['contact_number']; ?>">
+                    </div>
+                    <div>
+                        <label for="specialization">Specialization:</label>
+                        <input type="text" name="specialization" id="specialization" value="<?php echo $adminData['specialization']; ?>">
+                    </div>
+                    <div>
+                        <label for="gender">Gender:</label>
+                        <select name="gender" id="gender">
+                            <option value="Male" <?php if ($adminData['gender'] === 'Male') echo 'selected'; ?>>Male</option>
+                            <option value="Female" <?php if ($adminData['gender'] === 'Female') echo 'selected'; ?>>Female</option>
+                            <option value="Other" <?php if ($adminData['gender'] === 'Other') echo 'selected'; ?>>Other</option>
+                        </select>
+                    </div>
+                    <button type="submit">Update</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-
-
 </body>
 </html>
+
+
 
 
 

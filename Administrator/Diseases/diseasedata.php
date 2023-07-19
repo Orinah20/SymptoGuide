@@ -68,9 +68,11 @@ $result = mysqli_query($conn, $selectQuery);
     </div>
     <div class="content">
         <div class="content_user">
-            <div><b>Administrator</b></div>
-            <div class="content_user-left">
-                <div><b><?php echo($_SESSION['user_name']) ?></b></div>
+            <div>
+                <div><b>Administrator</b></div>
+                <div class="content_user-left">
+                    <div><b><?php echo($_SESSION['user_name']) ?></b></div>
+                </div>
             </div>
         </div>
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>

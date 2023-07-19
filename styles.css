@@ -51,83 +51,115 @@ input[type="submit"]:hover {
 }
 
 /*Administrator*/
-.container{
+.container {
     display: flex;
     width: 100%;
     height: 100vh;
-    background-color: #e8e8e8;
+    background-color: #f1f1f1;
 }
 
-.side_nav{
+.side_nav {
     position: fixed;
-    background-color:cadetblue ;
+    background-color: #3b6583;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.27);
     width: 20%;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
+.side_nav > h2 {
+    display: flex;
+    padding: 0 0.5rem;
+    color: #d4f1ff;
+    font-size: 1.6rem;
+    font-weight: lighter;
+}
 
-.content{
+button[name="logout"]{
+    border-radius: 0.25rem;
+    background: #a83e3e;
+    color: #ffffff;
+}
+
+button[name="logout"]:hover {
+    border-radius: 0.1rem;
+    background: #fa5d5d;
+    color: #ffffff;
+}
+
+.content {
     position: relative;
     left: 20%;
     width: 80%;
     display: flex;
     flex-direction: column;
-
 }
 
-.content_user{
-    padding: 1rem 0.5rem;
-    background-color: #b0efef;
+.content_user > div {
+    padding: 1rem 1.5rem;
+    background-color: rgba(172, 220, 255, 0.4);
     display: flex;
     justify-content: space-between;
 }
 
-.content_user-left{
+.content_user {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.content_user-left {
     display: flex;
 }
 
-.content_user-left > div{
+.content_user-left > div {
     padding: 0 0.5rem;
 }
 
-.content_data{
+.content_data {
     display: flex;
-    flex-wrap: wrap;
-    width: 80vw;
+    justify-content: space-around;
 }
 
-.content_data > a{
-    padding: 0.5rem 5rem;
+.content_data > a {
+    padding: 0.5rem 2rem;
 }
 
-.content_data > a:hover{
-    background-color: #45a085;
-    color: white;
+.content_data > a:hover {
+    background-color: #c8e5ff;
+    color: #000000;
+
 }
 
-.content_manage{
-    background-color: #30323d;
-    border-radius: 1rem;
+.content_manage {
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #000000;
+    border-radius: 0.5rem;
     margin: 1rem;
-    color: #bebebe;
     display: flex;
     align-items: center;
-    width: 250px;
+    justify-content: center;
+    width: 8rem;
     text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+    font-weight: lighter;
 }
 
 /*Users Data*/
 
-.content-data_user{
+.content-data_user {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 0 1rem;
 }
 
-.content-data_user--header{
+.content-data_user--header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -139,16 +171,16 @@ input[type="submit"]:hover {
     cursor: pointer;
 }
 
-th{
+th {
     background-color: #cccccc;
     border-spacing: 0;
 }
 
-td{
+td {
     text-align: center;
 }
 
-.content_data-container{
+.content_data-container {
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -157,49 +189,53 @@ td{
 
 /* Add this CSS code to your styles.css file */
 .nav-button {
-    display: block;
+    display: flex;
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: #b0efef;
+    background-color: #5d8fb3;
     text-align: left;
     margin: 0;
+    font-size: 1rem;
 }
 
 .nav-button:hover {
-    background-color: #427070;
+    background-color: #425b70;
+    border-radius: 0.1rem;
     color: white;
     cursor: pointer;
 }
 
 .nav-button.active {
-    background-color: rgba(171, 95, 95, 0.94);
-    color: #e3e000;
+    border-radius: 0.1rem;
+    background-color: #c8e5ff;
+    color: #000000;
 }
 
-.content_data-container--header{
+.content_data-container--header {
     display: flex;
     align-items: center;
 }
 
-.back-button{
+.back-button {
     padding: 0.25rem;
     margin: 0 0.25rem;
 }
 
-.back-button:hover{
+.back-button:hover {
     background-color: #b0efef;
     border-radius: 50%;
     padding: 0.25rem;
     margin: 0 0.25rem;
 }
-.edit_user{
+
+.edit_user {
     display: flex;
     max-width: 100%;
     flex-wrap: wrap;
 }
 
-.edit_user > label{
+.edit_user > label {
     width: 30%;
     margin: 0.5rem 1rem;
     display: flex;
@@ -207,40 +243,40 @@ td{
     justify-content: center;
 }
 
-input[readonly]{
+input[readonly] {
     background-color: #eaeaea;
     cursor: not-allowed;
 }
 
-.edit_user > div{
+.edit_user > div {
     width: 100%;
     display: flex;
     justify-content: flex-end;
 
 }
 
-.edit_user-update{
+.edit_user-update {
     background-color: #427070;
 }
 
 
-input[name="delete"]{
+input[name="delete"] {
     background-color: #a83e3e;
     margin: 0 0.5rem;
 }
 
-input[name="delete"]:hover{
+input[name="delete"]:hover {
     background-color: #7c3434;
     margin: 0 0.5rem;
 }
 
-.addUser_form{
+.addUser_form {
     display: flex;
     width: 100%;
     padding: 0.5rem 1rem;
 }
 
-.addUser{
+.addUser {
     max-width: 60%;
     display: flex;
     flex-wrap: wrap;
@@ -248,7 +284,7 @@ input[name="delete"]:hover{
     align-items: flex-end;
 }
 
-.addUser > label{
+.addUser > label {
     width: 47%;
     margin: 0.5rem;
     display: flex;
@@ -256,29 +292,29 @@ input[name="delete"]:hover{
     justify-content: center;
 }
 
-.content_data-header{
+.content_data-header {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
-input[name="add"]{
+input[name="add"] {
     margin: 0 0.5rem;
     height: max-content;
 }
 
-input[name="add"]:hover{
+input[name="add"]:hover {
     margin: 0 0.5rem;
 }
 
-.addUser > div{
+.addUser > div {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     margin: 0 0.5rem;
 }
 
-.form-details{
+.form-details {
     padding: 0.5rem;
     margin: 0 2rem;
     background: #ffffff;
@@ -291,12 +327,12 @@ input[name="add"]:hover{
 
 /* Add Disease */
 
-.addDisease_form{
+.addDisease_form {
     width: 100%;
     padding: 0.5rem 1rem;
 }
 
-.addDisease{
+.addDisease {
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -304,7 +340,7 @@ input[name="add"]:hover{
     align-items: flex-end;
 }
 
-.addDisease > label{
+.addDisease > label {
     width: 100%;
     margin: 0.5rem;
     display: flex;
@@ -312,7 +348,7 @@ input[name="add"]:hover{
     justify-content: center;
 }
 
-.addDisease > div{
+.addDisease > div {
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -321,12 +357,12 @@ input[name="add"]:hover{
 
 /* Add Symptom */
 
-.addSymptom_form{
+.addSymptom_form {
     width: 100%;
     padding: 0.5rem 1rem;
 }
 
-.addSymptom{
+.addSymptom {
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -334,7 +370,7 @@ input[name="add"]:hover{
     align-items: flex-end;
 }
 
-.addSymptom > label{
+.addSymptom > label {
     width: 100%;
     margin: 0.5rem;
     display: flex;
@@ -342,7 +378,7 @@ input[name="add"]:hover{
     justify-content: center;
 }
 
-.addSymptom > div{
+.addSymptom > div {
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -351,7 +387,7 @@ input[name="add"]:hover{
 
 /*Edit Disease*/
 
-.edit_disease{
+.edit_disease {
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -359,7 +395,7 @@ input[name="add"]:hover{
     align-items: flex-end;
 }
 
-.edit_disease > label{
+.edit_disease > label {
     width: 100%;
     margin: 0.5rem;
     display: flex;
@@ -367,7 +403,7 @@ input[name="add"]:hover{
     justify-content: center;
 }
 
-textarea[name="disease_description"]{
+textarea[name="disease_description"] {
     max-width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -376,7 +412,7 @@ textarea[name="disease_description"]{
     margin-bottom: 20px;
 }
 
-.edit_disease > div{
+.edit_disease > div {
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -384,7 +420,7 @@ textarea[name="disease_description"]{
 }
 
 /*Edit Symptom*/
-.edit_symptom{
+.edit_symptom {
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -392,7 +428,7 @@ textarea[name="disease_description"]{
     align-items: flex-end;
 }
 
-.edit_symptom > label{
+.edit_symptom > label {
     width: 100%;
     margin: 0.5rem;
     display: flex;
@@ -400,7 +436,7 @@ textarea[name="disease_description"]{
     justify-content: center;
 }
 
-textarea[name="symptom_description"]{
+textarea[name="symptom_description"] {
     max-width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -409,7 +445,7 @@ textarea[name="symptom_description"]{
     margin-bottom: 20px;
 }
 
-.edit_symptom > div{
+.edit_symptom > div {
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -468,11 +504,7 @@ body {
     color: red;
 }
 
-.container a {
-    color: #4caf50;
-}
-
-.login-form{
+.login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -480,7 +512,7 @@ body {
     width: 100%;
 }
 
-.login{
+.login {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -491,7 +523,7 @@ body {
     border-radius: 0.5rem;
 }
 
-.login > label{
+.login > label {
     width: 90%;
     margin-top: 0.25rem;
     display: flex;
@@ -499,14 +531,14 @@ body {
     justify-content: center;
 }
 
-.login > div{
+.login > div {
     width: 75%;
     display: flex;
     justify-content: flex-end;
     margin: 0 0.5rem;
 }
 
-.login > h2{
+.login > h2 {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -514,12 +546,12 @@ body {
     text-decoration: underline;
 }
 
-.login > p{
+.login > p {
     width: 100%;
     padding: 0;
 }
 
-.login-form{
+.login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -527,14 +559,14 @@ body {
     width: 100%;
 }
 
-.showPassword > label{
+.showPassword > label {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
 }
 
-.forgotPassword{
+.forgotPassword {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -545,7 +577,7 @@ body {
     border-radius: 0.5rem;
 }
 
-.forgotPassword > label{
+.forgotPassword > label {
     width: 90%;
     margin-top: 0.25rem;
     display: flex;
@@ -553,14 +585,14 @@ body {
     justify-content: center;
 }
 
-.forgotPassword > div{
+.forgotPassword > div {
     width: 75%;
     display: flex;
     justify-content: flex-end;
     margin: 0 0.5rem;
 }
 
-.forgotPassword > h2{
+.forgotPassword > h2 {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -568,14 +600,13 @@ body {
     text-decoration: underline;
 }
 
-.forgotPassword > p{
+.forgotPassword > p {
     width: 100%;
     padding: 0;
 }
 
 
-
-.resetPassword{
+.resetPassword {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -586,7 +617,7 @@ body {
     border-radius: 0.5rem;
 }
 
-.resetPassword > label{
+.resetPassword > label {
     width: 90%;
     margin-top: 0.25rem;
     display: flex;
@@ -594,14 +625,14 @@ body {
     justify-content: center;
 }
 
-.resetPassword > div{
+.resetPassword > div {
     width: 75%;
     display: flex;
     justify-content: flex-end;
     margin: 0 0.5rem;
 }
 
-.resetPassword > h2{
+.resetPassword > h2 {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -609,7 +640,7 @@ body {
     text-decoration: underline;
 }
 
-.resetPassword > p{
+.resetPassword > p {
     width: 100%;
     padding: 0;
 }
@@ -629,7 +660,7 @@ body {
     height: fit-content;
 }
 
-.registration{
+.registration {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -639,7 +670,7 @@ body {
     border-radius: 0.5rem;
 }
 
-.registration > label{
+.registration > label {
     width: 45%;
     margin: 0.5rem;
     display: flex;
@@ -647,17 +678,71 @@ body {
     justify-content: center;
 }
 
-.registration > div{
+.registration > div {
     width: 75%;
     display: flex;
     justify-content: flex-end;
     margin: 0 0.5rem;
 }
 
-.registration > h2{
+.registration > h2 {
     width: 100%;
     display: flex;
     justify-content: center;
     margin: 1rem 0;
     text-decoration: underline;
 }
+
+#mostAnalyzedDiseasesTable {
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    color: #000000;
+    margin: 1rem 1.5rem;
+    height: auto;
+    padding: 1rem;
+    align-items: center;
+}
+
+#mostAnalyzedDiseasesTable > div {
+    padding: 0 2rem;
+}
+
+#lineChartsContainer {
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    color: #000000;
+    margin: 1rem 1.5rem;
+    padding: 1rem 0;
+}
+
+.lineChart {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tablengraph {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.disease_name {
+    font-size: 1.25rem;
+    text-decoration: underline;
+    text-align: center;
+    padding: 0.25rem;
+
+}
+
+.percentage {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.25rem;
+}
+
+

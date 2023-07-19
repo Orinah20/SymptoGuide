@@ -129,3 +129,12 @@ input[type="submit"] {
     width: 50%;
     margin: 0 auto;
 }
+
+.container_header > h2{
+    margin: auto 0;
+}
+
+.header_position{
+    position: fixed;
+    width: 100vw;
+}

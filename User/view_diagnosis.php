@@ -33,11 +33,13 @@ $stmt->close();
 </head>
 <body>
 <div class="container">
-    <div class="container_header">
-        <h2>SymptoGuide</h2>
-        <div class="content_header-left">
-            <div><?php echo $_SESSION['user_name']; ?></div>
-            <a href="../logout.php">Logout</a>
+    <div class="header_position">
+        <div class="container_header">
+            <h2>SymptoGuide</h2>
+            <div class="content_header-left">
+                <div><?php echo $_SESSION['user_name']; ?></div>
+                <a href="../logout.php">Logout</a>
+            </div>
         </div>
     </div>
 
@@ -79,7 +81,7 @@ $stmt->close();
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#diagnosisTable').DataTable();
     });
 </script>

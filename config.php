@@ -2,8 +2,8 @@
 
 // Database configuration
 const DB_HOST = 'localhost';
-const DB_USERNAME = 'root';
-const DB_PASSWORD = '';
+const DB_USERNAME = 'admin@gmail.com';
+const DB_PASSWORD = '2022@admin#';
 const DB_NAME = 'diagnosis';
 
 // Create a database connection
