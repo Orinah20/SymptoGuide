@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="password" name="confirm_password" placeholder="Confirm Password" required>
             </label>
             <div>
-                <input type="submit" value="Reset Password">
+                <input type="submit" name="reset" value="Reset Password">
             </div>
             <p><a href="login.php">Back to Login</a></p>
         </form>

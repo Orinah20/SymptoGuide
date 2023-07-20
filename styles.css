@@ -9,11 +9,6 @@ h2 {
     color: #333;
 }
 
-form {
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
 label {
     display: block;
     margin-bottom: 10px;
@@ -23,6 +18,8 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"],
+input[type="date"],
+input[type="number"],
 select {
     width: 100%;
     padding: 10px;
@@ -32,17 +29,17 @@ select {
     margin-bottom: 20px;
 }
 
-input[type="submit"] {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
+textarea[name="disease_description"],
+textarea[name="symptom_description"],
+textarea[name="patient_symptoms"]
+{
+    max-width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    height: 2.5rem;
 }
 
 .error-message {
@@ -96,9 +93,14 @@ button[name="logout"]:hover {
     flex-direction: column;
 }
 
+.content_data-total{
+    display: flex;
+    justify-content: space-around;
+}
+
 .content_user > div {
     padding: 1rem 1.5rem;
-    background-color: rgba(172, 220, 255, 0.4);
+    background-color: #d6e9f7;
     display: flex;
     justify-content: space-between;
 }
@@ -119,17 +121,17 @@ button[name="logout"]:hover {
 
 .content_data {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    padding-bottom: 1rem;
 }
 
-.content_data > a {
+.content_data-total > a {
     padding: 0.5rem 2rem;
 }
 
-.content_data > a:hover {
+.content_data-total > a:hover {
     background-color: #c8e5ff;
     color: #000000;
-
 }
 
 .content_manage {
@@ -155,8 +157,7 @@ h1 {
 .content-data_user {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
 }
 
 .content-data_user--header {
@@ -183,8 +184,7 @@ td {
 .content_data-container {
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
 }
 
 /* Add this CSS code to your styles.css file */
@@ -223,7 +223,7 @@ td {
 }
 
 .back-button:hover {
-    background-color: #b0efef;
+    background-color: #c8e5ff;
     border-radius: 50%;
     padding: 0.25rem;
     margin: 0 0.25rem;
@@ -231,8 +231,11 @@ td {
 
 .edit_user {
     display: flex;
-    max-width: 100%;
     flex-wrap: wrap;
+    border-radius: 0.2rem 0.2rem 0 0;
+    padding: 1rem 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .edit_user > label {
@@ -250,43 +253,140 @@ input[readonly] {
 
 .edit_user > div {
     width: 100%;
+    margin: 0 1.5rem;
     display: flex;
     justify-content: flex-end;
-
 }
 
-.edit_user-update {
-    background-color: #427070;
+.deleteUser{
+    display: flex;
+    border-radius: 0 0 0.2rem 0.2rem;
+    padding-bottom: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+.deleteUser > div{
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.editPatient {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.2rem 0.2rem 0 0;
+    padding: 1rem 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.editPatient > label {
+    width: 30%;
+    margin: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.editPatient > div {
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.deletePatient{
+    display: flex;
+    border-radius: 0 0 0.2rem 0.2rem;
+    padding-bottom: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.deletePatient > div{
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.editDisease {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.2rem 0.2rem 0 0;
+    padding: 1rem 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.editDisease > label {
+    width: 30%;
+    margin: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.editDisease > div {
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.deleteDisease{
+    display: flex;
+    border-radius: 0 0 0.2rem 0.2rem;
+    padding-bottom: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.deleteDisease > div{
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
 
 input[name="delete"] {
+    width: 10%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
     background-color: #a83e3e;
     margin: 0 0.5rem;
 }
 
 input[name="delete"]:hover {
-    background-color: #7c3434;
+    background-color: #fa5d5d;
     margin: 0 0.5rem;
 }
 
 .addUser_form {
     display: flex;
-    width: 100%;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
 }
 
-.addUser {
-    max-width: 60%;
+.addUser{
+    max-width: 70%;
     display: flex;
     flex-wrap: wrap;
-    margin: 0;
+    padding: 1rem 0.5rem;
     align-items: flex-end;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.addUser > label {
-    width: 47%;
-    margin: 0.5rem;
+.addUser > label{
+    width: 45%;
+    margin: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -295,12 +395,11 @@ input[name="delete"]:hover {
 .content_data-header {
     display: flex;
     align-items: center;
-    width: 100%;
+    padding-left: 1rem;
 }
 
 input[name="add"] {
     margin: 0 0.5rem;
-    height: max-content;
 }
 
 input[name="add"]:hover {
@@ -314,9 +413,39 @@ input[name="add"]:hover {
     margin: 0 0.5rem;
 }
 
+.addPatient_form{
+    padding: 0.5rem 1.5rem;
+}
+
+.addPatient {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem 0.5rem;
+    align-items: flex-end;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.addPatient > label{
+    width: 45%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.addPatient > div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0.5rem;
+}
+
 .form-details {
     padding: 0.5rem;
-    margin: 0 2rem;
+    margin-left: 2rem;
     background: #ffffff;
     width: 40%;
     border-radius: 0.5rem;
@@ -326,23 +455,24 @@ input[name="add"]:hover {
 }
 
 /* Add Disease */
-
-.addDisease_form {
-    width: 100%;
-    padding: 0.5rem 1rem;
+.addDisease_form{
+    padding: 0.5rem 1.5rem;
 }
 
 .addDisease {
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin: 0;
+    padding: 1rem 0.5rem;
     align-items: flex-end;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.addDisease > label {
-    width: 100%;
-    margin: 0.5rem;
+.addDisease > label{
+    width: 45%;
+    margin: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -355,24 +485,34 @@ input[name="add"]:hover {
     margin: 0 0.5rem;
 }
 
-/* Add Symptom */
 
-.addSymptom_form {
+/* Add Symptom */
+.addSymptom > div {
     width: 100%;
-    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0.5rem;
+}
+
+.addSymptom_form{
+    padding: 0.5rem 1.5rem;
+
 }
 
 .addSymptom {
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin: 0;
+    padding: 1rem 0.5rem;
     align-items: flex-end;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.addSymptom > label {
-    width: 100%;
-    margin: 0.5rem;
+.addSymptom > label{
+    width: 45%;
+    margin: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -387,71 +527,47 @@ input[name="add"]:hover {
 
 /*Edit Disease*/
 
-.edit_disease {
-    max-width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-    align-items: flex-end;
-}
-
-.edit_disease > label {
-    width: 100%;
-    margin: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-textarea[name="disease_description"] {
-    max-width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-}
-
-.edit_disease > div {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    margin: 0 0.5rem;
-}
 
 /*Edit Symptom*/
-.edit_symptom {
-    max-width: 100%;
+
+.editSymptom {
     display: flex;
     flex-wrap: wrap;
-    margin: 0;
-    align-items: flex-end;
+    border-radius: 0.2rem 0.2rem 0 0;
+    padding: 1rem 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.edit_symptom > label {
-    width: 100%;
-    margin: 0.5rem;
+.editSymptom > label {
+    width: 30%;
+    margin: 0.5rem 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-textarea[name="symptom_description"] {
-    max-width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-}
-
-.edit_symptom > div {
+.editSymptom > div {
     width: 100%;
+    margin: 0 1.5rem;
     display: flex;
     justify-content: flex-end;
-    margin: 0 0.5rem;
 }
 
+.deleteSymptom{
+    display: flex;
+    border-radius: 0 0 0.2rem 0.2rem;
+    padding-bottom: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.deleteSymptom > div{
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
 /* styles.css */
 
 body {
@@ -468,10 +584,6 @@ body {
     margin-bottom: 20px;
 }
 
-.container label {
-    display: block;
-    margin-bottom: 10px;
-}
 
 .container input[type="text"],
 .container input[type="password"] {
@@ -481,18 +593,27 @@ body {
     border-radius: 3px;
 }
 
-.container input[type="checkbox"] {
+input[type="checkbox"] {
     margin-right: 5px;
 }
 
-.container input[type="submit"] {
-    width: 100%;
-    padding: 10px;
+input[name="add"],
+input[name="update"]
+{
+    width: 10%;
+    padding: 0.5rem;
     border: none;
     border-radius: 3px;
-    background-color: #4caf50;
-    color: #fff;
+    background-color: #5d8fb3;
+    color: #ffffff;
     cursor: pointer;
+}
+
+input[name="add"]:hover,
+input[name="update"]:hover
+{
+    background-color: #c8e5ff;
+    color: #000000;
 }
 
 .container p {
@@ -504,13 +625,6 @@ body {
     color: red;
 }
 
-.login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5%;
-    width: 100%;
-}
 
 .login {
     display: flex;
@@ -521,6 +635,8 @@ body {
     padding: 0.5rem;
     width: 30vw;
     border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .login > label {
@@ -531,11 +647,18 @@ body {
     justify-content: center;
 }
 
-.login > div {
+input[name="login"] {
     width: 75%;
-    display: flex;
-    justify-content: flex-end;
     margin: 0 0.5rem;
+    font-size: 1rem;
+}
+
+.login > div {
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: center;
+
 }
 
 .login > h2 {
@@ -575,6 +698,8 @@ body {
     padding: 0.5rem;
     width: 30vw;
     border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .forgotPassword > label {
@@ -585,11 +710,17 @@ body {
     justify-content: center;
 }
 
-.forgotPassword > div {
+input[name="reset"] {
     width: 75%;
-    display: flex;
-    justify-content: flex-end;
     margin: 0 0.5rem;
+    font-size: 1rem;
+}
+
+.forgotPassword > div {
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: center;
 }
 
 .forgotPassword > h2 {
@@ -605,7 +736,6 @@ body {
     padding: 0;
 }
 
-
 .resetPassword {
     display: flex;
     align-items: center;
@@ -615,6 +745,8 @@ body {
     padding: 0.5rem;
     width: 30vw;
     border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .resetPassword > label {
@@ -626,10 +758,10 @@ body {
 }
 
 .resetPassword > div {
-    width: 75%;
+    width: 100%;
+    margin: 0 1.5rem;
     display: flex;
-    justify-content: flex-end;
-    margin: 0 0.5rem;
+    justify-content: center;
 }
 
 .resetPassword > h2 {
@@ -668,6 +800,8 @@ body {
     margin: 0.5rem 1rem;
     width: 50vw;
     border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .registration > label {
@@ -678,11 +812,17 @@ body {
     justify-content: center;
 }
 
-.registration > div {
+input[name="register"] {
     width: 75%;
-    display: flex;
-    justify-content: flex-end;
     margin: 0 0.5rem;
+    font-size: 1rem;
+}
+
+.registration > div {
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: center;
 }
 
 .registration > h2 {
@@ -745,4 +885,90 @@ body {
     padding: 0.25rem;
 }
 
+#userData thead th,
+#PatientData thead th,
+#DiseaseData thead th,
+#SymptomData thead th,
+#DiagnosisData thead th
+{
+    background-color: #d6e9f7;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#userData tbody tr:hover,
+#PatientData tbody tr:hover,
+#DiseaseData tbody tr:hover,
+#SymptomData tbody tr:hover,
+#DiagnosisData tbody tr:hover
+{
+    background-color: #c8e5ff;
+    cursor: pointer;
+}
+
+button[name="addUser"],
+button[name="addPatient"],
+button[name="addDisease"],
+button[name="addSymptom"],
+input[name="login"],
+input[name="register"],
+input[name="reset"],
+input[name="forgot"]
+{
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #5d8fb3;
+    color: #ffffff;
+    padding: 0.5rem;
+}
+
+button[name="addUser"]:hover,
+button[name="addPatient"]:hover,
+button[name="addDisease"]:hover,
+button[name="addSymptom"]:hover,
+input[name="login"]:hover,
+input[name="register"]:hover,
+input[name="reset"]:hover,
+input[name="forgot"]:hover
+{
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #c8e5ff;
+    color: #000000;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.analysis-count{
+    text-align: center;
+}
+
+#session-expire{
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    background-color: #a83e3e;
+    color: #ffffff;
+    left: 35%;
+    font-size: 1.25rem;
+}
+
+.viewDiagnosis {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.2rem 0.2rem 0 0;
+    padding: 1rem 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.viewDiagnosis > label {
+    width: 30%;
+    margin: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 

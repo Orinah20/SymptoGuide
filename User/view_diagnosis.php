@@ -3,7 +3,7 @@
 @include '../session.php';
 
 // Retrieve the diagnosis data with distinct patient_id and report_date
-$stmt = $conn->prepare("SELECT dp.patient_id, p.name, GROUP_CONCAT(CONCAT(d.disease_name, ' (', dp.probability, '%)')) AS diagnoses, dp.date_created
+$stmt = $conn->prepare("SELECT dp.patient_id, p.patient_name, GROUP_CONCAT(CONCAT(d.disease_name, ' (', dp.probability, '%)')) AS diagnoses, dp.date_created
                         FROM disease_probability dp
                         INNER JOIN diseases d ON dp.disease_id = d.disease_id
                         INNER JOIN patients p ON dp.patient_id = p.patient_id
@@ -66,7 +66,7 @@ $stmt->close();
                     <?php foreach ($diagnosisData as $data) : ?>
                         <tr>
                             <td><?php echo $data['patient_id']; ?></td>
-                            <td><?php echo $data['name']; ?></td>
+                            <td><?php echo $data['patient_name']; ?></td>
                             <td><?php echo $data['diagnoses']; ?></td>
                             <td><?php echo date('F j, Y, g:i A', strtotime($data['date_created'])); ?></td>
                         </tr>

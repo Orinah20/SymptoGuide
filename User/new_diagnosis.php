@@ -91,7 +91,7 @@ function searchPatient($query)
                 <p><strong>Patient ID:</strong> <?php echo $patientData['patient_id']; ?></p>
             </div>
             <div>
-                <p><strong>Name:</strong> <?php echo $patientData['name']; ?></p>
+                <p><strong>Name:</strong> <?php echo $patientData['patient_name']; ?></p>
             </div>
             <div>
                 <p><strong>Date of Birth:</strong> <?php echo $patientData['date_of_birth']; ?></p>
@@ -123,7 +123,7 @@ function searchPatient($query)
         // Set the patient ID in the session
         <?php
         $_SESSION['patient_id'] = $patientData['patient_id'];
-        $_SESSION['patient_name'] = $patientData['name'];
+        $_SESSION['patient_name'] = $patientData['patient_name'];
         ?>
 
         // Get the patient ID

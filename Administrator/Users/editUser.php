@@ -50,57 +50,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <div class="container">
     <div class="side_nav">
-        <div class="side_nav">
-            <div class="side_nav-data">
-                <h2>SymptoGuide</h2>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'dashboard') echo 'active'; ?>"
-                            onclick="window.location.href='../administrator.php'">
-                        Dashboard
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'userdata' || $activePage == 'editUser' || $activePage == 'addUser') echo 'active'; ?>"
-                            onclick="window.location.href='userdata.php'">Users
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'patientdata' || $activePage == 'editPatient' || $activePage == 'addPatient' ) echo 'active'; ?>"
-                            onclick="window.location.href='../Patient/patientdata.php'">Patients
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'diseasedata') echo 'active'; ?>"
-                            onclick="window.location.href='../Diseases/diseasedata.php'">Disease
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'symptomdata') echo 'active'; ?>"
-                            onclick="window.location.href='../Symptoms/symptomdata.php'">Symptom
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'reports') echo 'active'; ?>"
-                            onclick="window.location.href='../Reports/reports.php'">Reports
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'adminSettings') echo 'active'; ?>"
-                            onclick="window.location.href='../adminSettings.php'">Settings
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button" onclick="window.location.href='../../logout.php'">Logout</button>
-                </div>
-            </div>
+        <h2>SymptoGuide</h2>
+        <div>
+            <button class="nav-button <?php if ($activePage == 'dashboard') echo 'active'; ?>"
+                    onclick="window.location.href='/SymptoGuide/Administrator/administrator.php' ">Dashboard
+            </button>
+        </div>
+        <div>
+            <button class="nav-button <?php if ($activePage == 'userdata' || $activePage == 'editUser' || $activePage == 'addUser') echo 'active'; ?>"
+                    onclick="window.location.href='/SymptoGuide/Administrator/Users/userdata.php'">Users
+            </button>
+        </div>
+        <div>
+            <button class="nav-button <?php if ($activePage == 'patientdata') echo 'active'; ?>"
+                    onclick="window.location.href='/SymptoGuide/Administrator/Patient/patientdata.php'">Patients
+            </button>
+        </div>
+        <div>
+            <button class="nav-button <?php if ($activePage == 'diseasedata') echo 'active'; ?>"
+                    onclick="window.location.href='/SymptoGuide/Administrator/Diseases/diseasedata.php'">Disease
+            </button>
+        </div>
+        <div>
+            <button class="nav-button <?php if ($activePage == 'symptomdata') echo 'active'; ?>"
+                    onclick="window.location.href='/SymptoGuide/Administrator/Symptoms/symptomdata.php'">Symptom
+            </button>
+        </div>
+
+        <div>
+            <button class="nav-button <?php if ($activePage == 'diagnosis') echo 'active'; ?>"
+                    onclick="window.location.href='/SymptoGuide/Administrator/Diagnosis/diagnosisdata.php'">Diagnosis
+            </button>
+        </div>
+
+        <div>
+            <button class="nav-button <?php if ($activePage == 'reports') echo 'active'; ?>"
+                    onclick="window.location.href='/SymptoGuide/Administrator/Reports/reports.php'">Reports
+            </button>
+        </div>
+
+        <div>
+            <button class="nav-button <?php if ($activePage == 'adminSettings') echo 'active'; ?>"
+                    onclick="window.location.href='/SymptoGuide/Administrator/adminSettings.php'">Settings
+            </button>
+        </div>
+        <div>
+            <button class="nav-button" name="logout" onclick="window.location.href='../logout.php'">Logout</button>
         </div>
 
     </div>
     <div class="content">
         <div class="content_user">
-            <div><b>Administrator</b></div>
-            <div class="content_user-left">
-                <div><b><?php echo($_SESSION['user_name']) ?></b></div>
+            <div>
+                <div><b>Administrator</b></div>
+                <div class="content_user-left">
+                    <div><b><?php echo($_SESSION['user_name']) ?></b></div>
+                </div>
             </div>
         </div>
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
@@ -147,12 +152,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </option>
                         </select>
                     </label>
-                    <input type="submit" name="update" value="Update" class="edit_user-update">
+
+                    <div>
+                        <input type="submit" name="update" value="Update" class="edit_user-update">
+                    </div>
                 </form>
 
-                <form action="deleteUser.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                <form action="deleteUser.php" method="POST" class="deleteUser"
+                      onsubmit="return confirm('Are you sure you want to delete this user?');">
                     <input type="hidden" name="medical_id" value="<?php echo $row['medical_id']; ?>">
-                    <input type="submit" name="delete" value="Delete User" class="edit_user-delete">
+                    <div>
+                        <input type="submit" name="delete" value="Delete" >
+                    </div>
                 </form>
 
             </div>

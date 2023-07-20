@@ -194,46 +194,44 @@ function getDiseaseAnalysisHistory($diseaseId)
                 </div>
             </div>
         </div>
-        <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
+        <div><p id="session-expire">Session will expire in: <span id="timer"></span></p></div>
         <div class="content_data">
-            <a class="content_manage" href="Users/userdata.php">
-                <div>
-                    <h3>Users </h3>
-                    <h2><?php echo getUserCount(); ?></h2>
-                </div>
-            </a>
+            <div class="content_data-total">
+                <a class="content_manage" href="Users/userdata.php">
+                    <div>
+                        <h3>Users </h3>
+                        <h2><?php echo getUserCount(); ?></h2>
+                    </div>
+                </a>
 
-            <a class="content_manage" href="Patient/patientdata.php">
-                <div>
-                    <h3>Patients</h3>
-                    <h2><?php echo getPatientCount(); ?></h2>
-                </div>
-            </a>
+                <a class="content_manage" href="Patient/patientdata.php">
+                    <div>
+                        <h3>Patients</h3>
+                        <h2><?php echo getPatientCount(); ?></h2>
+                    </div>
+                </a>
 
-            <a class="content_manage" href="Diseases/diseasedata.php">
-                <div>
-                    <h3>Diseases </h3>
-                    <h2><?php echo getDiseaseCount(); ?></h2>
-                </div>
-            </a>
+                <a class="content_manage" href="Diseases/diseasedata.php">
+                    <div>
+                        <h3>Diseases </h3>
+                        <h2><?php echo getDiseaseCount(); ?></h2>
+                    </div>
+                </a>
 
-            <a class="content_manage" href="Symptoms/symptomdata.php">
-                <div>
-                    <h3>Symptoms </h3>
-                    <h2><?php echo getSymptomCount(); ?></h2>
-                </div>
-            </a>
+                <a class="content_manage" href="Symptoms/symptomdata.php">
+                    <div>
+                        <h3>Symptoms </h3>
+                        <h2><?php echo getSymptomCount(); ?></h2>
+                    </div>
+                </a>
 
-            <a class="content_manage" href="Reports/reports.php">
-                <div>
-                    <h3>Diagnosis</h3>
-                    <h2><?php echo getDiagnosisCount(); ?></h2>
-                </div>
-            </a>
-
-        </div>
-
-        <div class="tablengraph">
+                <a class="content_manage" href="Diagnosis/diagnosisdata.php">
+                    <div>
+                        <h3>Diagnosis</h3>
+                        <h2><?php echo getDiagnosisCount(); ?></h2>
+                    </div>
+                </a>
+            </div>
             <div id="mostAnalyzedDiseasesTable">
                 <h2>Infection Rate:</h2>
                 <?php
@@ -247,7 +245,6 @@ function getDiseaseAnalysisHistory($diseaseId)
                     <div>
                         <div class="disease_name"><?php echo $diseaseName; ?></div>
                         <div class="percentage"><?php echo $percentage; ?>%</div>
-                        <div id="pieChart_<?php echo $diseaseId; ?>"></div>
                         <div class="analysis-count">Analysis Count: <?php echo $analysisCount; ?></div>
                     </div>
                     <?php
@@ -320,8 +317,8 @@ function getDiseaseAnalysisHistory($diseaseId)
             var options = {
                 chart: {
                     type: 'line',
-                    height: 200,
-                    width: 230,
+                    height: 150,
+                    width: 168,
                 },
                 series: [{
                     name: diseaseName,

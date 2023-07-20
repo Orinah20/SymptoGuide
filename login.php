@@ -65,7 +65,6 @@ function sanitizeInput($input)
 <body>
 <div class="container">
     <div class="login-form">
-
         <form action="login.php" method="POST" class="login">
             <h2>Login</h2>
             <label for="medical_id"> Medical ID:
@@ -84,7 +83,7 @@ function sanitizeInput($input)
             </label>
 
             <div>
-                <input type="submit" value="Login">
+                <input type="submit" name="login" value="Login">
             </div>
 
             <p>New User? <a href="registration.php">Register Now</a></p>

@@ -4,7 +4,7 @@
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
     // Retrieve form data
-    $name = $_POST['name'];
+    $name = $_POST['patient_name'];
     $dateOfBirth = $_POST['date_of_birth'];
     $gender = $_POST['gender'];
     $contactNumber = $_POST['contact_number'];
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
     $patientId = generatePatientId();
 
     // Prepare the SQL statement to insert data into the patients table
-    $stmt = $conn->prepare("INSERT INTO patients (patient_id, name, date_of_birth, gender, contact_number, address) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO patients (patient_id, patient_name, date_of_birth, gender, contact_number, address) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssss", $patientId, $name, $dateOfBirth, $gender, $contactNumber, $address);
 
     // Execute the query
@@ -86,8 +86,8 @@ function generatePatientId() {
             </div>
             <div class="addUser_form">
                 <form action="" method="POST" class="addUser">
-                    <label for="name">Name:
-                        <input type="text" name="name" placeholder="Name" required>
+                    <label for="patient_name">Name:
+                        <input type="text" name="patient_name" placeholder="Patient Name" required>
                     </label>
                     <label for="dob">Date of Birth:
                         <input type="date" name="date_of_birth" placeholder="Date of Birth" required>

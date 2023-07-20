@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = sanitizeInput($_POST['address']);
     $specialization = $_POST['specialization'];
     $gender = $_POST['gender'];
-    $dateOfBirth = $_POST['date_of_birth'];
+    $medicalCertificate = sanitizeInput($_POST['medical_certificate']);
     $securityQuestion = $_POST['security_question'];
     $securityAnswer = sanitizeInput($_POST['security_answer']);
 
@@ -40,11 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             // Add the user to the database using prepared statement
-            $insertQuery = "INSERT INTO users (medical_id, user_type, name, email, password, contact_number, address, specialization, gender, date_of_birth, security_question, security_answer)
+            $insertQuery = "INSERT INTO users (medical_id, user_type, name, email, password, contact_number, address, specialization, gender, medical_certificate, security_question, security_answer)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($conn, $insertQuery);
             $userType = 'User';
-            mysqli_stmt_bind_param($stmt, "ssssssssssss", $medicalId, $userType, $name, $email, $hashedPassword, $contactNumber, $address, $specialization, $gender, $dateOfBirth, $securityQuestion, $securityAnswer);
+            mysqli_stmt_bind_param($stmt, "ssssssssssss", $medicalId, $userType, $name, $email, $hashedPassword, $contactNumber, $address, $specialization, $gender, $medicalCertificate, $securityQuestion, $securityAnswer);
 
             if (mysqli_stmt_execute($stmt)) {
                 // Registration successful, redirect to login page
@@ -140,7 +140,6 @@ function isValidPasswordFormat($password)
                 </select>
             </label>
 
-
             <label for="gender">Gender:
                 <select name="gender" required>
                     <option value="male">Male</option>
@@ -149,9 +148,8 @@ function isValidPasswordFormat($password)
                 </select>
             </label>
 
-            <label for="date_of_birth">Date of Birth:
-                <input type="date" name="date_of_birth" placeholder="Date of Birth"
-                       max="<?php echo date('Y-m-d', strtotime('-22 years')); ?>" required>
+            <label for="medical_certificate">Medical Certificate Number:
+                <input type="text" name="medical_certificate" pattern="[0-9]+" placeholder="Medical Certificate Number" required>
             </label>
 
             <label for="security_question">Security Question:
@@ -161,7 +159,6 @@ function isValidPasswordFormat($password)
                     <option value="What is the name of your first pet?">What is the name of your first pet?</option>
                     <option value="What was the name of your first school?">What was the name of your first school?
                     </option>
-                    <!-- Add more options as needed -->
                 </select>
             </label>
 
@@ -170,7 +167,7 @@ function isValidPasswordFormat($password)
             </label>
 
             <div>
-                <input type="submit" value="Register">
+                <input type="submit" name="register" value="Register">
             </div>
 
             <p>Already a user? <a href="login.php">Login Now</a></p>

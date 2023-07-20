@@ -21,48 +21,54 @@ $result = mysqli_query($conn, $selectQuery);
 <div class="container">
     <div class="side_nav">
         <div class="side_nav">
-            <div class="side_nav-data">
-                <h2>SymptoGuide</h2>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'dashboard') echo 'active'; ?>"
-                            onclick="window.location.href='../administrator.php'">
-                        Dashboard
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'userdata' || $activePage == 'editUser' || $activePage == 'addUser') echo 'active'; ?>"
-                            onclick="window.location.href='../Users/userdata.php'">Users
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'patientdata' || $activePage == 'editPatient' || $activePage == 'addPatient' ) echo 'active'; ?>"
-                            onclick="window.location.href='../Patient/patientdata.php'">Patients
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'diseasedata' || $activePage == 'editDisease' || $activePage == 'addDisease') echo 'active'; ?>"
-                            onclick="window.location.href='diseasedata.php'">Disease
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'symptomdata' || $activePage == 'editSymptom' || $activePage == 'addSymptom') echo 'active'; ?>"
-                            onclick="window.location.href='../Symptoms/symptomdata.php'">Symptom
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'reports') echo 'active'; ?>"
-                            onclick="window.location.href='../Reports/reports.php'">Reports
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button <?php if ($activePage == 'adminSettings') echo 'active'; ?>"
-                            onclick="window.location.href='../adminSettings.php'">Settings
-                    </button>
-                </div>
-                <div>
-                    <button class="nav-button" onclick="window.location.href='../../logout.php'">Logout</button>
-                </div>
+            <h2>SymptoGuide</h2>
+            <div>
+                <button class="nav-button <?php if ($activePage == 'dashboard') echo 'active'; ?>"
+                        onclick="window.location.href='/SymptoGuide/Administrator/administrator.php' ">Dashboard
+                </button>
             </div>
+            <div>
+                <button class="nav-button <?php if ($activePage == 'userdata' || $activePage == 'editUser' || $activePage == 'addUser') echo 'active'; ?>"
+                        onclick="window.location.href='/SymptoGuide/Administrator/Users/userdata.php'">Users
+                </button>
+            </div>
+            <div>
+                <button class="nav-button <?php if ($activePage == 'patientdata') echo 'active'; ?>"
+                        onclick="window.location.href='/SymptoGuide/Administrator/Patient/patientdata.php'">Patients
+                </button>
+            </div>
+            <div>
+                <button class="nav-button <?php if ($activePage == 'diseasedata') echo 'active'; ?>"
+                        onclick="window.location.href='/SymptoGuide/Administrator/Diseases/diseasedata.php'">Disease
+                </button>
+            </div>
+            <div>
+                <button class="nav-button <?php if ($activePage == 'symptomdata') echo 'active'; ?>"
+                        onclick="window.location.href='/SymptoGuide/Administrator/Symptoms/symptomdata.php'">Symptom
+                </button>
+            </div>
+
+            <div>
+                <button class="nav-button <?php if ($activePage == 'diagnosis') echo 'active'; ?>"
+                        onclick="window.location.href='/SymptoGuide/Administrator/Diagnosis/diagnosisdata.php'">Diagnosis
+                </button>
+            </div>
+
+            <div>
+                <button class="nav-button <?php if ($activePage == 'reports') echo 'active'; ?>"
+                        onclick="window.location.href='/SymptoGuide/Administrator/Reports/reports.php'">Reports
+                </button>
+            </div>
+
+            <div>
+                <button class="nav-button <?php if ($activePage == 'adminSettings') echo 'active'; ?>"
+                        onclick="window.location.href='/SymptoGuide/Administrator/adminSettings.php'">Settings
+                </button>
+            </div>
+            <div>
+                <button class="nav-button" name="logout" onclick="window.location.href='../logout.php'">Logout</button>
+            </div>
+
         </div>
 
     </div>
@@ -82,7 +88,7 @@ $result = mysqli_query($conn, $selectQuery);
                     <h2>Disease Data</h2>
                     <div>
                         <a href="addDisease.php">
-                            <button>Add Disease</button>
+                            <button name="addDisease">Add Disease</button>
                         </a>
                     </div>
                 </div>

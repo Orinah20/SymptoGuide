@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </label>
 
             <div>
-                <input type="submit" value="Reset Password">
+                <input type="submit" name="reset" value="Reset Password">
             </div>
             <p><a href="login.php">Back to Login</a></p>
         </form>
