@@ -3,25 +3,6 @@
 require_once '../../config.php';
 require_once '../../session.php';
 
-/*// Function to fetch diagnosis data for the selected patient and date
-function getDiagnosisData($patientId, $dateCreated)
-{
-    global $conn;
-    $stmt = $conn->prepare("SELECT dp.patient_id, p.patient_name, GROUP_CONCAT(DISTINCT CONCAT(d.disease_name, ' (', dp.probability, '%)')) AS diagnoses, dp.date_created, 
-                           GROUP_CONCAT(DISTINCT s2.symptom_name) AS patient_symptoms, GROUP_CONCAT(DISTINCT ps.medical_id) AS medical_ids
-                           FROM disease_probability dp
-                           INNER JOIN diseases d ON dp.disease_id = d.disease_id
-                           INNER JOIN patients p ON dp.patient_id = p.patient_id
-                           LEFT JOIN patient_symptoms ps ON dp.patient_id = ps.patient_id
-                           LEFT JOIN symptoms s2 ON ps.symptom_id = s2.symptom_id
-                           WHERE dp.patient_id = ? AND dp.date_created = ?
-                           GROUP BY dp.patient_id, dp.date_created");
-    $stmt->bind_param("is", $patientId, $dateCreated);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result->fetch_assoc();
-}*/
-
 // Function to fetch diagnosis data for the selected patient and date
 function getDiagnosisData($patientId, $dateCreated)
 {

@@ -158,14 +158,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </form>
 
-                <form action="deleteUser.php" method="POST" class="deleteUser"
-                      onsubmit="return confirm('Are you sure you want to delete this user?');">
-                    <input type="hidden" name="medical_id" value="<?php echo $row['medical_id']; ?>">
-                    <div>
-                        <input type="submit" name="delete" value="Delete" >
-                    </div>
-                </form>
-
             </div>
         </div>
     </div>

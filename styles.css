@@ -1,4 +1,3 @@
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f1f1f1;
@@ -246,7 +245,8 @@ td {
     justify-content: center;
 }
 
-input[readonly] {
+input[readonly],
+textarea[readonly]{
     background-color: #eaeaea;
     cursor: not-allowed;
 }
@@ -972,3 +972,19 @@ input[name="forgot"]:hover
     justify-content: center;
 }
 
+@media print {
+    .side_nav,
+    .content_user,
+    #session-expire,
+    .search-form button,
+    .search
+    {
+        display: none;
+    }
+
+    .content{
+        left: 0;
+        margin: 0 auto;
+        width: 100%;
+    }
+}

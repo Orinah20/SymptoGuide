@@ -32,7 +32,7 @@ function displayRemainingTime() {
         if (remainingTime > 0) {
             countdown = setTimeout(updateTimer, 1000); // Update the timer every second
         } else {
-            // Session expired, redirect to logout page
+            // Session expired, redirect to log out page
             window.location.href = '/SymptoGuide/logout.php';
         }
     }
@@ -69,3 +69,18 @@ function togglePasswordVisibility() {
     }
 }
 
+function printContent() {
+    // Hide the print button to prevent it from being printed
+    var printButton = document.querySelector(".content_data button");
+    if (printButton) {
+        printButton.style.display = "none";
+    }
+
+    // Open the print dialog
+    window.print();
+
+    // Restore the visibility of the print button after printing is done
+    if (printButton) {
+        printButton.style.display = "block";
+    }
+}

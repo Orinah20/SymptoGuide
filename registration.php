@@ -33,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (mysqli_num_rows($result) > 0) {
             $error = 'Email already exists.';
         } else {
+            $userType = 'User';
+
             // Generate a unique medical ID
             $medicalId = generateMedicalId();
 
@@ -43,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $insertQuery = "INSERT INTO users (medical_id, user_type, name, email, password, contact_number, address, specialization, gender, medical_certificate, security_question, security_answer)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($conn, $insertQuery);
-            $userType = 'User';
             mysqli_stmt_bind_param($stmt, "ssssssssssss", $medicalId, $userType, $name, $email, $hashedPassword, $contactNumber, $address, $specialization, $gender, $medicalCertificate, $securityQuestion, $securityAnswer);
 
             if (mysqli_stmt_execute($stmt)) {

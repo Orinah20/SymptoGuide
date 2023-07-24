@@ -104,7 +104,7 @@ function sanitizeInput($input)
             </button>
         </div>
         <div>
-            <button class="nav-button" name="logout" onclick="window.location.href='../logout.php'">Logout</button>
+            <button class="nav-button" name="logout" onclick="window.location.href='/SymptoGuide/logout.php'">Logout</button>
         </div>
     </div>
     <div class="content">
@@ -145,13 +145,6 @@ function sanitizeInput($input)
                         </div>
                     </form>
 
-                    <form action="deleteSymptom.php" method="POST" class="deleteSymptom"
-                          onsubmit="return confirm('Are you sure you want to delete this symptom?');">
-                        <input type="hidden" name="symptom_id" value="<?php echo $row['symptom_id']; ?>">
-                        <div>
-                        <input type="submit" name="delete" value="Delete Symptom" >
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

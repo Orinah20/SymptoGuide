@@ -175,7 +175,7 @@ function sanitizeInput($input)
             </button>
         </div>
         <div>
-            <button class="nav-button" name="logout" onclick="window.location.href='../logout.php'">Logout</button>
+            <button class="nav-button" name="logout" onclick="window.location.href='/SymptoGuide/logout.php'">Logout</button>
         </div>
 
     </div>

@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </button>
         </div>
         <div>
-            <button class="nav-button" name="logout" onclick="window.location.href='../logout.php'">Logout</button>
+            <button class="nav-button" name="logout" onclick="window.location.href='/SymptoGuide/logout.php'">Logout</button>
         </div>
     </div>
 
@@ -151,14 +151,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <div>
                         <input type="submit" name="update" value="Update" class="edit_user-update">
-                    </div>
-                </form>
-
-                <form action="deletePatient.php" method="POST" class="deletePatient"
-                      onsubmit="return confirm('Are you sure you want to delete this user?');">
-                    <input type="hidden" name="patient_id" value="<?php echo $row['patient_id']; ?>">
-                    <div>
-                        <input type="submit" name="delete" value="Delete User" class="edit_user-delete">
                     </div>
                 </form>
 
