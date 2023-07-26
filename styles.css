@@ -910,10 +910,12 @@ button[name="addUser"],
 button[name="addPatient"],
 button[name="addDisease"],
 button[name="addSymptom"],
+button[name="print"],
 input[name="login"],
 input[name="register"],
 input[name="reset"],
-input[name="forgot"]
+input[name="forgot"],
+input[name="search"]
 {
     border: none;
     border-radius: 0.2rem;
@@ -926,10 +928,12 @@ button[name="addUser"]:hover,
 button[name="addPatient"]:hover,
 button[name="addDisease"]:hover,
 button[name="addSymptom"]:hover,
+button[name="print"]:hover,
 input[name="login"]:hover,
 input[name="register"]:hover,
 input[name="reset"]:hover,
-input[name="forgot"]:hover
+input[name="forgot"]:hover,
+input[name="search"]:hover
 {
     border: none;
     border-radius: 0.2rem;
@@ -937,6 +941,11 @@ input[name="forgot"]:hover
     color: #000000;
     padding: 0.5rem;
     cursor: pointer;
+}
+
+button[name="print"]{
+    width: 10%;
+    height: fit-content;
 }
 
 .analysis-count{
@@ -972,6 +981,87 @@ input[name="forgot"]:hover
     justify-content: center;
 }
 
+.search > h2{
+    text-align: left;
+    padding-bottom: 0.5rem;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-form > label {
+    width: 50%;
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+input[name="search_id"] {
+    width: 100%;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+
+}
+
+input[name="search"] {
+    width: 100%;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+
+}
+
+.search-form > div {
+    width: 25%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.search-form > h2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    text-decoration: underline;
+}
+
+.medical-user-details-form{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.medical-user-details-form > label{
+    width: 30%;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.report{
+    margin: 0.5rem 0;
+    padding: 1rem 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #000000;
+    border-radius: 0.5rem;
+}
+
+.report_header{
+    display: flex;
+    justify-content: space-between;
+}
+
 @media print {
     .side_nav,
     .content_user,
@@ -980,6 +1070,10 @@ input[name="forgot"]:hover
     .search
     {
         display: none;
+    }
+
+    .report{
+        box-shadow: none;
     }
 
     .content{

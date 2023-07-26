@@ -1,8 +1,6 @@
 /* Reset styles */
-html, body, div, span, h1, h2, p, a {
+html, body{
     margin: 0;
-    padding: 0;
-    border: 0;
     font: inherit;
     vertical-align: baseline;
 }
@@ -15,21 +13,7 @@ body {
     line-height: 1.5;
 }
 
-h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-p {
-    margin-bottom: 20px;
-}
-
-.button {
+.link {
     display: inline-block;
     padding: 10px 20px;
     background-color: #007bff;
@@ -39,7 +23,7 @@ p {
     transition: background-color 0.3s ease;
 }
 
-.button:hover {
+.link:hover {
     background-color: #0056b3;
 }
 
@@ -68,7 +52,7 @@ label {
 input[type="text"] {
     padding: 8px;
     border: 1px solid #ccc;
-    width: 100%;
+    width: 50%;
 }
 
 input[type="submit"] {
@@ -89,34 +73,37 @@ input[type="submit"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.25rem;
     background-color: #45a085;
+    padding: 0.25rem 1rem;
+    height: 3rem;
+}
+
+.container_header > div{
+    margin: 0 2rem;
 }
 
 .content_header-left{
     display: flex;
-    margin: 0.5rem 0;
 }
 
 .content_header-left > a{
     padding-left: 1rem;
-    padding-right: 1rem;
 }
 
 .content{
-    padding: 2rem;
-    width: 50%;
-    margin: 0 auto;
+    height: 90%;
 }
 
-.new_diagnosis{
-    width: 50%;
-    margin: 0 auto;
+.content_home{
+    position: relative;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.patient_data{
+.patient_data {
     background-color: #eaeaea;
-    width: 100%;
     padding: 1rem 0 1rem 2rem;
     border-radius: 0.25rem;
     margin: 1rem 0;
@@ -125,16 +112,13 @@ input[type="submit"] {
     align-items: center;
 }
 
-.create-patient{
-    width: 50%;
-    margin: 0 auto;
-}
-
-.container_header > h2{
-    margin: auto 0;
-}
-
 .header_position{
     position: fixed;
     width: 100vw;
+}
+
+.content_data-header {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
 }

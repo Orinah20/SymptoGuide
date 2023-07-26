@@ -14,11 +14,6 @@ if (isset($_GET['patient_id'])) {
     $patient = $result->fetch_assoc();
     $stmt->close();
 
-    // Calculate the age based on the date of birth
-    $dateOfBirth = new DateTime($patient['date_of_birth']);
-    $today = new DateTime();
-    $age = $today->diff($dateOfBirth)->y;
-
     // Retrieve respiratory symptoms from the database
     $symptomsQuery = "SELECT * FROM symptoms";
     $symptomsResult = mysqli_query($conn, $symptomsQuery);

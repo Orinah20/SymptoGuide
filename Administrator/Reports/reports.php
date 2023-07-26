@@ -123,34 +123,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
         <div><p id="session-expire">Session will expire in: <span id="timer"></span></p></div>
-        <div class="content_data">
+        <div class="content-data_user">
             <div class="search">
-                <h2>Search Patients by Patient ID or Medical User by Medical ID</h2>
+                <h2>Patients/Medical User Search</h2>
                 <form action="" method="POST" class="search-form">
-                    <label for="search_id">Enter Patient ID or Medical ID:</label>
-                    <input type="text" name="search_id" id="search_id" required>
-                    <input type="submit" value="Search">
+                    <label for="search_id"> Enter Patient ID or Medical ID:
+                        <input type="text" name="search_id" id="search_id" required>
+                    </label>
+
+                    <div>
+                        <input type="submit" name="search" value="Search">
+                    </div>
                 </form>
             </div>
 
             <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
                 <?php if (!empty($patientData)) : ?>
-                    <div>
-                        <button onclick="printContent()">Print</button>
-                        <h3>Patient Details</h3>
-                        <form class="patient-details-form">
-                            <label for="patient_id">Patient ID:</label>
+                    <div class="report">
+                        <div class="report_header">
+                            <h3>Patient Details</h3>
+                            <button name="print" onclick="printContent()">Print</button>
+                        </div>
+                        <form class="medical-user-details-form">
+                            <label for="patient_id">Patient ID:
                             <input type="text" id="patient_id" name="patient_id"
                                    value="<?php echo $patientData[0]['patient_id']; ?>" readonly>
-                            <label for="patient_name">Patient Name:</label>
+                            </label>
+                            <label for="patient_name">Patient Name:
                             <input type="text" id="patient_name" name="patient_name"
                                    value="<?php echo $patientData[0]['patient_name']; ?>" readonly>
-                            <label for="patient_gender">Gender:</label>
+                            </label>
+                            <label for="patient_gender">Gender:
                             <input type="text" id="patient_gender" name="patient_gender"
                                    value="<?php echo $patientData[0]['gender']; ?>" readonly>
+                            </label>
                         </form>
 
-                        <h3>Search Results</h3>
+                        <h3>Diagnosis Results</h3>
                         <table>
                             <thead>
                             <tr>
@@ -169,22 +178,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </table>
                     </div>
                 <?php elseif (!empty($medicalUserData)) : ?>
-                    <div>
-                        <button onclick="printContent()">Print</button>
-                        <h3>Medical User Details</h3>
+                    <div class="report">
+                        <div class="report_header">
+                            <h3>Medical User Details</h3>
+                            <button name="print" onclick="printContent()">Print</button>
+                        </div>
                         <form class="medical-user-details-form">
-                            <label for="medical_id">Medical ID:</label>
-                            <input type="text" id="medical_id" name="medical_id"
-                                   value="<?php echo $medicalUserData[0]['medical_id']; ?>" readonly>
-                            <label for="medical_name">Medical Username:</label>
-                            <input type="text" id="medical_name" name="medical_name"
-                                   value="<?php echo $medicalUserData[0]['name']; ?>" readonly>
-                            <label for="medical_certificate">Medical Certificate:</label>
-                            <input type="text" id="medical_certificate" name="medical_certificate"
-                                   value="<?php echo $medicalUserData[0]['medical_certificate']; ?>" readonly>
+                            <label for="medical_id">Medical ID:
+                                <input type="text" id="medical_id" name="medical_id"
+                                       value="<?php echo $medicalUserData[0]['medical_id']; ?>" readonly>
+                            </label>
+                            <label for="medical_name">Medical Username:
+                                <input type="text" id="medical_name" name="medical_name"
+                                       value="<?php echo $medicalUserData[0]['name']; ?>" readonly>
+                            </label>
+                            <label for="medical_certificate">Medical Certificate:
+                                <input type="text" id="medical_certificate" name="medical_certificate"
+                                       value="<?php echo $medicalUserData[0]['medical_certificate']; ?>" readonly>
+                            </label>
                         </form>
 
-                        <h3>Search Results</h3>
+                        <h3>Diagnosis Results</h3>
                         <table>
                             <thead>
                             <tr>

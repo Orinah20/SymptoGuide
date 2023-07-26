@@ -52,8 +52,6 @@ function analyzeDiseaseProbabilities($selectedSymptoms) {
         }
     }
 
-    // Calculate disease probabilities
-    $totalSymptoms = count($selectedSymptoms);
     foreach ($diseaseProbabilities as $diseaseId => $data) {
         $count = $data['count'];
         $symptomCount = $data['symptom_count'];
@@ -75,31 +73,6 @@ function analyzeDiseaseProbabilities($selectedSymptoms) {
     return $diseaseProbabilities;
 }
 
-// Function to fetch disease name from the database
-function getDiseaseName($diseaseId)
-{
-    global $conn;
-
-    // Prepare the SQL statement
-    $stmt = $conn->prepare("SELECT disease_name FROM diseases WHERE disease_id = ?");
-    $stmt->bind_param("i", $diseaseId);
-
-    // Execute the query
-    $stmt->execute();
-
-    // Get the result
-    $result = $stmt->get_result();
-
-    // Fetch the disease name
-    $row = $result->fetch_assoc();
-    $diseaseName = $row['disease_name'];
-
-    // Close the statement
-    $stmt->close();
-
-    // Return the disease name
-    return $diseaseName;
-}
 
 // Function to insert diagnosis information into disease_probability table
 function insertDiagnosisIntoHistory($diseaseProbabilities)
@@ -192,7 +165,6 @@ function getDiseaseId($diseaseName)
     <div class="content_data-header">
         <div class="button-container">
             <button class="retry-button" onclick="window.location.href='new_diagnosis.php'">New Diagnosis</button>
-            <button class="retry-button" onclick="window.location.href='diagnosis.php'">Retry Diagnosis</button>
             <button class="return-button" onclick="window.location.href='user.php'">Return to User Page</button>
         </div>
     </div>

@@ -16,18 +16,22 @@
     <div class="container_header">
         <h2>SymptoGuide</h2>
         <div class="content_header-left">
-        <div><?php echo $_SESSION['user_name']; ?></div>
-        <a href="../logout.php">Logout</a>
+            <div><?php echo $_SESSION['user_name']; ?></div>
+            <a href="../logout.php">Logout</a>
         </div>
     </div>
 
     <div class="content">
-        <h2>Diagnosis System</h2>
-        <p>Explore symptoms and create a new symptom:</p>
+        <div class="content_home">
+            <div>
+                <h2>Diagnosis System</h2>
+            </div>
+            <div>Explore symptoms and create a new symptom:</div>
 
-        <div class="actions">
-            <a href="view_diagnosis.php" class="button">View Diagnosis</a>
-            <a href="new_diagnosis.php" class="button">New Diagnosis</a>
+            <div class="actions">
+                <a href="view_diagnosis.php" class="link">View Diagnosis</a>
+                <a href="new_diagnosis.php" class="link">New Diagnosis</a>
+            </div>
         </div>
     </div>
 

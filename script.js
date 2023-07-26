@@ -71,7 +71,7 @@ function togglePasswordVisibility() {
 
 function printContent() {
     // Hide the print button to prevent it from being printed
-    var printButton = document.querySelector(".content_data button");
+    var printButton = document.querySelector(".content-data_user button");
     if (printButton) {
         printButton.style.display = "none";
     }

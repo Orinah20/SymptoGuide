@@ -69,52 +69,55 @@ function searchPatient($query)
         </div>
     </div>
 
-    <form action="" method="POST" class="new_diagnosis">
+    <div class="content">
+        <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
         <div class="content_data-header">
-            <div>
-                <a href="user.php" class="back-button">
-                    <img src="../back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">
-                </a>
-                <h1>New Diagnosis</h1>
-            </div>
-
-            <label for="search_query">Search Patient:</label>
-            <input type="text" name="search_query" placeholder="Enter Patient ID" required>
-            <button type="submit">Search</button>
-    </form>
-
-    <?php if ($patientData) : ?>
-    <div class="patient_data">
-        <div>
-            <h2><u>Patient Details</u></h2>
-            <div>
-                <p><strong>Patient ID:</strong> <?php echo $patientData['patient_id']; ?></p>
-            </div>
-            <div>
-                <p><strong>Name:</strong> <?php echo $patientData['patient_name']; ?></p>
-            </div>
-            <div>
-                <p><strong>Date of Birth:</strong> <?php echo $patientData['date_of_birth']; ?></p>
-            </div>
-            <div>
-                <p><strong>Gender:</strong> <?php echo $patientData['gender']; ?></p>
-            </div>
-            <div>
-                <p><strong>Contact Number:</strong> <?php echo $patientData['contact_number']; ?></p>
-            </div>
-            <div>
-                <p><strong>Address:</strong> <?php echo $patientData['address']; ?></p>
-            </div>
-
-            <div>
-                <button onclick="openDiagnosisPage()">Use Patient Details</button>
-            </div>
+            <a href="user.php" class="back-button">
+                <img src="../back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">
+            </a>
+            <h1>New Diagnosis</h1>
         </div>
-        <?php endif; ?>
-    </div>
 
-    <div class="create-patient">
-        If the patient is not found, <a href="createPatient.php">click here</a> to create a new patient.
+        <div>
+            <form action="" method="POST" class="new_diagnosis">
+                <label for="search_query">Search Patient:</label>
+                <input type="text" name="search_query" placeholder="Enter Patient ID" required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <?php if ($patientData) : ?>
+            <div class="patient_data">
+                <div>
+                    <h2><u>Patient Details</u></h2>
+                    <div>
+                        <p><strong>Patient ID:</strong> <?php echo $patientData['patient_id']; ?></p>
+                    </div>
+                    <div>
+                        <p><strong>Name:</strong> <?php echo $patientData['patient_name']; ?></p>
+                    </div>
+                    <div>
+                        <p><strong>Date of Birth:</strong> <?php echo $patientData['date_of_birth']; ?></p>
+                    </div>
+                    <div>
+                        <p><strong>Gender:</strong> <?php echo $patientData['gender']; ?></p>
+                    </div>
+                    <div>
+                        <p><strong>Contact Number:</strong> <?php echo $patientData['contact_number']; ?></p>
+                    </div>
+                    <div>
+                        <p><strong>Address:</strong> <?php echo $patientData['address']; ?></p>
+                    </div>
+
+                    <div>
+                        <button onclick="openDiagnosisPage()">Use Patient Details</button>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="create-patient">
+            If the patient is not found, <a href="createPatient.php">click here</a> to create a new patient.
+        </div>
     </div>
 </div>
 
