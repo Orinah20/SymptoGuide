@@ -19,7 +19,8 @@ if (!empty($selectedSymptoms)) {
 }
 
 // Perform disease analysis based on symptoms
-function analyzeDiseaseProbabilities($selectedSymptoms) {
+function analyzeDiseaseProbabilities($selectedSymptoms)
+{
     global $conn;
 
     // Initialize disease probabilities
@@ -127,6 +128,7 @@ function getDiseaseId($diseaseName)
     // Return the disease ID
     return $diseaseId;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -146,29 +148,30 @@ function getDiseaseId($diseaseName)
         </div>
     </div>
 
-    <div class="diagnosis-results">
-        <h2>Disease Probabilities</h2>
-        <table>
-            <tr>
-                <th>Disease</th>
-                <th>Probability</th>
-            </tr>
-            <?php foreach ($diseaseProbabilities as $data) : ?>
+    <div class="content">
+        <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
+        <div class="diagnosis-results">
+            <h2>Disease Probabilities</h2>
+            <table>
                 <tr>
-                    <td><?php echo $data['name']; ?></td>
-                    <td><?php echo $data['probability']; ?>%</td>
+                    <th>Disease</th>
+                    <th>Probability</th>
                 </tr>
-            <?php endforeach; ?>
-        </table>
-    </div>
-
-    <div class="content_data-header">
-        <div class="button-container">
-            <button class="retry-button" onclick="window.location.href='new_diagnosis.php'">New Diagnosis</button>
-            <button class="return-button" onclick="window.location.href='user.php'">Return to User Page</button>
+                <?php foreach ($diseaseProbabilities as $data) : ?>
+                    <tr>
+                        <td><?php echo $data['name']; ?></td>
+                        <td><?php echo $data['probability']; ?>%</td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+        <div class="content_data-header">
+            <div class="button-container">
+                <button class="retry-button" onclick="window.location.href='new_diagnosis.php'">New Diagnosis</button>
+                <button class="return-button" onclick="window.location.href='user.php'">Return to User Page</button>
+            </div>
         </div>
     </div>
-
 </div>
 </body>
 </html>

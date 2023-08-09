@@ -3,13 +3,15 @@ require_once '../../config.php';
 require_once '../../session.php';
 
 // Function to fetch patient data from the disease_probability table using patient_id
-function searchPatientByPatientId($patientId)
+function searchPatientByPatientId($patientId): array
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT p.*, GROUP_CONCAT(DISTINCT CONCAT(d.disease_name, ' (', dp.probability, '%)')) AS diagnoses, dp.date_created
+    $stmt = $conn->prepare("SELECT p.*, ps.medical_id, u.name AS medical_name, GROUP_CONCAT(DISTINCT CONCAT(d.disease_name, ' (', dp.probability, '%)')) AS diagnoses, dp.date_created
                            FROM disease_probability dp
                            INNER JOIN patients p ON dp.patient_id = p.patient_id
                            INNER JOIN diseases d ON dp.disease_id = d.disease_id
+                           INNER JOIN patient_symptoms ps ON dp.patient_id = ps.patient_id
+                           INNER JOIN users u ON ps.medical_id = u.medical_id
                            WHERE dp.patient_id = ?
                            GROUP BY dp.patient_id, dp.date_created");
     $stmt->bind_param("s", $patientId);
@@ -19,7 +21,7 @@ function searchPatientByPatientId($patientId)
 }
 
 // Function to fetch medical user data from the users table using medical_id
-function searchMedicalUserByMedicalId($medicalId)
+function searchMedicalUserByMedicalId($medicalId): array
 {
     global $conn;
     $stmt = $conn->prepare("SELECT u.*, dp.patient_id, p.patient_name, GROUP_CONCAT(DISTINCT CONCAT(d.disease_name, ' (', dp.probability, '%)')) AS diagnoses, dp.date_created, 
@@ -163,6 +165,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <table>
                             <thead>
                             <tr>
+                                <th>Medical Id</th>
+                                <th>Medical Name</th>
                                 <th>Diagnoses</th>
                                 <th>Date Created</th>
                             </tr>
@@ -170,6 +174,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <tbody>
                             <?php foreach ($patientData as $data) : ?>
                                 <tr>
+                                    <td><?php echo $data['medical_id']; ?></td>
+                                    <td><?php echo $data['medical_name']; ?></td>
                                     <td><?php echo $data['diagnoses']; ?></td>
                                     <td><?php echo $data['date_created']; ?></td>
                                 </tr>

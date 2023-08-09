@@ -134,34 +134,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
 
         <div class="content_data">
-            <h2>Admin Settings</h2>
-            <div>
-                <form method="POST" action="">
-                    <div>
-                        <label for="name">Medical Id:</label>
+            <div class="content-data_user">
+                <div class="content-data_user--header">
+                    <h2>Admin Settings</h2>
+                </div>
+                <form method="POST" action="" class="adminSetting">
+                    <label for="name">Medical Id:
                         <input type="text" name="medical_id" id="medical_id"
                                value="<?php echo $adminData['medical_id']; ?>" readonly>
-                    </div>
-                    <div>
-                        <label for="name">Name:</label>
+                    </label>
+
+                    <label for="name">Name:
                         <input type="text" name="name" id="name" value="<?php echo $adminData['name']; ?>">
-                    </div>
-                    <div>
-                        <label for="email">Email:</label>
+                    </label>
+
+
+                    <label for="email">Email:
                         <input type="email" name="email" id="email" value="<?php echo $adminData['email']; ?>">
-                    </div>
-                    <div>
-                        <label for="contact_number">Contact Number:</label>
+                    </label>
+
+                    <label for="contact_number">Contact Number:
                         <input type="text" name="contact_number" id="contact_number"
                                value="<?php echo $adminData['contact_number']; ?>">
-                    </div>
-                    <div>
-                        <label for="specialization">Specialization:</label>
+                    </label>
+
+                    <label for="specialization">Specialization:
                         <input type="text" name="specialization" id="specialization"
                                value="<?php echo $adminData['specialization']; ?>">
-                    </div>
-                    <div>
-                        <label for="gender">Gender:</label>
+                    </label>
+
+                    <label for="gender">Gender:
                         <select name="gender" id="gender">
                             <option value="Male" <?php if ($adminData['gender'] === 'Male') echo 'selected'; ?>>Male
                             </option>
@@ -172,8 +174,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 Other
                             </option>
                         </select>
+                    </label>
+                    <div>
+                        <button type="submit" name="update">Update</button>
                     </div>
-                    <button type="submit">Update</button>
                 </form>
             </div>
         </div>

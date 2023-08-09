@@ -281,10 +281,6 @@ function getDiseaseAnalysisHistory($diseaseId)
                 // Add any other DataTable options you want
             });
 
-            // Your PHP data
-            var diseasesData = <?php echo json_encode($mostAnalyzedDiseases); ?>;
-            var lineChartContainer = document.getElementById('lineChartsContainer');
-
             var analysisHistory = <?php echo json_encode(getDiseaseAnalysisHistory($diseaseId)); ?>;
             var labels = analysisHistory.map(function (data) {
                 return new Date(data['date']).toLocaleDateString();
@@ -318,7 +314,7 @@ function getDiseaseAnalysisHistory($diseaseId)
                 chart: {
                     type: 'line',
                     height: 150,
-                    width: 168,
+                    width: 290,
                 },
                 series: [{
                     name: diseaseName,
@@ -340,8 +336,6 @@ function getDiseaseAnalysisHistory($diseaseId)
             var chart = new ApexCharts(document.getElementById('lineChart_' + diseaseId), options);
             chart.render();
         }
-
-
     </script>
 </body>
 </html>

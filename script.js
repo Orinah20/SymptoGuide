@@ -1,6 +1,6 @@
 // Function to display the remaining time
 function displayRemainingTime() {
-    const sessionExpireTime = 3600; // Time limit in seconds
+    const sessionExpireTime = 45; // Time limit in seconds
     const sessionTimeoutKey = 'symptoGuideSessionTimeout'; // Key to store session timeout in localStorage
 
     let remainingTime = sessionExpireTime; // Initial remaining time in seconds

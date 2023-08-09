@@ -258,6 +258,30 @@ textarea[readonly]{
     justify-content: flex-end;
 }
 
+.adminSetting {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.2rem 0.2rem 0 0;
+    padding: 1rem 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.adminSetting > label {
+    width: 30%;
+    margin: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.adminSetting > div{
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .deleteUser{
     display: flex;
     border-radius: 0 0 0.2rem 0.2rem;
@@ -266,12 +290,7 @@ textarea[readonly]{
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.deleteUser > div{
-    width: 100%;
-    margin: 0 1.5rem;
-    display: flex;
-    justify-content: flex-end;
-}
+
 
 .editPatient {
     display: flex;
@@ -835,22 +854,23 @@ input[name="register"] {
 
 #mostAnalyzedDiseasesTable {
     display: flex;
+    flex-wrap: wrap;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 0.5rem;
     color: #000000;
     margin: 1rem 1.5rem;
-    height: auto;
     padding: 1rem;
     align-items: center;
 }
 
 #mostAnalyzedDiseasesTable > div {
-    padding: 0 2rem;
+    padding: 0 0.1rem;
 }
 
 #lineChartsContainer {
     display: flex;
+    flex-wrap: wrap;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 0.5rem;
@@ -915,7 +935,8 @@ input[name="login"],
 input[name="register"],
 input[name="reset"],
 input[name="forgot"],
-input[name="search"]
+input[name="search"],
+button[name="update"]
 {
     border: none;
     border-radius: 0.2rem;
@@ -933,7 +954,8 @@ input[name="login"]:hover,
 input[name="register"]:hover,
 input[name="reset"]:hover,
 input[name="forgot"]:hover,
-input[name="search"]:hover
+input[name="search"]:hover,
+button[name="update"]:hover
 {
     border: none;
     border-radius: 0.2rem;

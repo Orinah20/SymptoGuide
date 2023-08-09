@@ -30,9 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="">
 <head>
-    <title>Admin Page</title>
+    <title>User Page</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
     <script src="../script.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 </head>
 <body>
 <div class="container">
@@ -63,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($patientData)) : ?>
                 <h3>Search Results</h3>
-                <table>
+                <table id="PatientData">
                     <thead>
                     <tr>
                         <th>Patient ID</th>
@@ -74,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </thead>
                     <tbody>
                     <?php foreach ($patientData as $data) : ?>
-                        <tr>
+                        <tr onclick="window.location.href='viewPatient.php?patient_id=<?php echo $data['patient_id']; ?>&date_created=<?php echo urlencode($data['date_created']); ?>';">
                             <td><?php echo $data['patient_id']; ?></td>
                             <td><?php echo $data['patient_name']; ?></td>
                             <td><?php echo $data['diagnoses']; ?></td>
@@ -89,5 +90,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#PatientData').DataTable({
+            "order": [[3, "desc"]]
+        });
+    });
+</script>
+</body>
 </html>
 

@@ -4,7 +4,7 @@
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
     // Retrieve form data
-    $name = $_POST['patient_name'];
+    $patientName = $_POST['patient_name'];
     $dateOfBirth = $_POST['date_of_birth'];
     $gender = $_POST['gender'];
     $contactNumber = $_POST['contact_number'];
@@ -13,9 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
     // Generate the next patient_id
     $patientId = generatePatientId();
 
+    $_SESSION['patient_id'] = $patientId;
+    $_SESSION['patient_name'] = $patientName;
+
+
     // Prepare the SQL statement to insert data into the patients table
     $stmt = $conn->prepare("INSERT INTO patients (patient_id, patient_name, date_of_birth, gender, contact_number, address) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $patientId, $name, $dateOfBirth, $gender, $contactNumber, $address);
+    $stmt->bind_param("ssssss", $patientId, $patientName, $dateOfBirth, $gender, $contactNumber, $address);
 
     // Execute the query
     if ($stmt->execute()) {
@@ -33,7 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
 }
 
 // Function to generate the next patient_id
-function generatePatientId() {
+function generatePatientId()
+{
     global $conn;
 
     // Get the last patient_id from the patients table
@@ -45,13 +50,14 @@ function generatePatientId() {
     // Generate the next patient_id
     $lastPatientId = $row ? $row['patient_id'] : 'PAT0000';
     $nextPatientNumber = intval(substr($lastPatientId, 3)) + 1;
-    $nextPatientId = 'pat' . sprintf('%04d', $nextPatientNumber);
+    $nextPatientId = 'PAT' . sprintf('%04d', $nextPatientNumber);
 
     // Close the statement
     $stmt->close();
 
     return $nextPatientId;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -71,11 +77,6 @@ function generatePatientId() {
         </div>
     </div>
     <div class="content">
-        <div class="content_user">
-            <div class="content_user-left">
-                <div><b><?php echo $_SESSION['user_name']; ?></b></div>
-            </div>
-        </div>
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
         <div class="content_data">
             <div class="content_data-header">
