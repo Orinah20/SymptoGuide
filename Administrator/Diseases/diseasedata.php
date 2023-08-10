@@ -92,6 +92,11 @@ $result = mysqli_query($conn, $selectQuery);
                         </a>
                     </div>
                 </div>
+
+                <div class="printButton">
+                    <button name="print" onclick="printContent()">Print</button>
+                </div>
+
                 <table id="DiseaseData">
                     <thead>
                     <tr>

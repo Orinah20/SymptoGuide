@@ -761,7 +761,7 @@ input[name="reset"] {
     justify-content: center;
     flex-wrap: wrap;
     margin: 1rem;
-    padding: 0.5rem;
+    padding: 1rem 0.5rem;
     width: 30vw;
     border-radius: 0.5rem;
     background-color: #fff;
@@ -931,6 +931,8 @@ button[name="addPatient"],
 button[name="addDisease"],
 button[name="addSymptom"],
 button[name="print"],
+button[name="changePassword"],
+button[name="changeSecurity"],
 input[name="login"],
 input[name="register"],
 input[name="reset"],
@@ -950,6 +952,8 @@ button[name="addPatient"]:hover,
 button[name="addDisease"]:hover,
 button[name="addSymptom"]:hover,
 button[name="print"]:hover,
+button[name="changePassword"]:hover,
+button[name="changeSecurity"]:hover,
 input[name="login"]:hover,
 input[name="register"]:hover,
 input[name="reset"]:hover,
@@ -1082,6 +1086,12 @@ input[name="search"] {
 .report_header{
     display: flex;
     justify-content: space-between;
+}
+
+.printButton{
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 1rem;
 }
 
 @media print {

@@ -1,22 +1,42 @@
 <?php
+global $conn, $activePage;
+include '../config.php';
+include '../session.php';
 
-@include '../../config.php';
-@include '../../session.php';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $medicalId = $_SESSION['user_id'];
+    $newPassword = $_POST['new_password'];
+    $confirmPassword = $_POST['confirm_password'];
 
+    // Validate form data
+    if ($newPassword !== $confirmPassword) {
+        echo '<script>alert("Passwords do not match.");</script>';
+    } else {
+        // Hash the new password
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
-// Retrieve user data from the database
-$selectQuery = "SELECT * FROM users";
-$result = mysqli_query($conn, $selectQuery);
+        // Update the user's password in the database
+        $updateQuery = "UPDATE users SET password = ? WHERE medical_id = ?";
+        $stmt = $conn->prepare($updateQuery);
+        $stmt->bind_param("ss", $hashedPassword, $medicalId);
 
+        if ($stmt->execute()) {
+            echo '<script>alert("Password change successful. Use the new password on the next login.");</script>';
+        } else {
+            echo '<script>alert("Failed to change password. Please try again later.");</script>';
+        }
+
+        $stmt->close();
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="">
 <head>
     <title>Admin Page</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="../../styles.css">
-    <script src="../../script.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <script src="../script.js"></script>
 </head>
 <body>
 <div class="container">
@@ -61,12 +81,13 @@ $result = mysqli_query($conn, $selectQuery);
         </div>
 
         <div>
-            <button class="nav-button <?php if ($activePage == 'adminSettings') echo 'active'; ?>"
+            <button class="nav-button <?php if ($activePage == 'adminSettings' || $activePage == 'changePassword') echo 'active'; ?>"
                     onclick="window.location.href='/SymptoGuide/Administrator/adminSettings.php'">Settings
             </button>
         </div>
         <div>
-            <button class="nav-button" name="logout" onclick="window.location.href='/SymptoGuide/logout.php'">Logout</button>
+            <button class="nav-button" name="logout" onclick="window.location.href='/SymptoGuide/logout.php'">Logout
+            </button>
         </div>
 
     </div>
@@ -83,59 +104,27 @@ $result = mysqli_query($conn, $selectQuery);
 
         <div class="content_data">
             <div class="content-data_user">
-                <div class="content-data_user--header">
-                    <h2>User Data</h2>
+                <div class="content_data-container--header">
+                    <a href="adminSettings.php" class="back-button">
+                        <img src="../back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">
+                    </a>
+                    <h2>Reset Password</h2>
+                </div>
+
+                <form action="" method="POST" class="resetPassword">
+                    <label for="new_password">New Password
+                        <input type="password" name="new_password" placeholder="New Password" required>
+                    </label>
+                    <label for="confirm_password">Confirm Password
+                        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                    </label>
                     <div>
-                        <a href="addUser.php">
-                            <button name="addUser">Add User</button>
-                        </a>
+                        <input type="submit" name="reset" value="Reset Password">
                     </div>
-                </div>
-
-                <div class="printButton">
-                    <button name="print" onclick="printContent()">Print</button>
-                </div>
-
-                <table id="userData">
-                    <thead>
-                    <tr>
-                        <th>Medical ID</th>
-                        <th>Medical Certificate</th>
-                        <th>User Type</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Contact Number</th>
-                        <th>Specialization</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<tr onclick="window.location.href=\'editUser.php?medical_id=' . $row['medical_id'] . '\';">';
-                        echo '<td>' . $row['medical_id'] . '</td>';
-                        echo '<td>' . $row['medical_certificate'] . '</td>';
-                        echo '<td>' . $row['user_type'] . '</td>';
-                        echo '<td>' . $row['name'] . '</td>';
-                        echo '<td>' . $row['email'] . '</td>';
-                        echo '<td>' . $row['contact_number'] . '</td>';
-                        echo '<td>' . $row['specialization'] . '</td>';
-                        echo '</tr>';
-                    }
-                    ?>
-                    </tbody>
-                </table>
+                </form>
             </div>
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#userData').DataTable();
-    });
-</script>
-
 </body>
 </html>
-

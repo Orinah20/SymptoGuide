@@ -13,9 +13,7 @@ $currentFile = basename($_SERVER['PHP_SELF'], '.php');
 // Define an array of valid pages
 $validPages = array('dashboard', 'userdata', 'addUser', 'editUser','addPatient', 'editPatient', 'patientdata',
     'addDisease', 'editDisease', 'diseasedata', 'addSymptom', 'editSymptom','symptomdata', 'reports', 'adminSettings',
-    'diagnosisdata', 'viewDiagnosisData' ,'logout');
+    'diagnosisdata', 'viewDiagnosisData','changePassword','logout');
 
 // Check if the current page is valid
 $activePage = (in_array($currentFile, $validPages)) ? $currentFile : 'dashboard';
-
-

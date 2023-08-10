@@ -123,6 +123,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="text" name="medical_id" value="<?php echo $row['medical_id']; ?>" readonly>
                     </label>
 
+                    <label for="medical_certificate">Medical ID:
+                        <input type="text" name="medical_certificate" value="<?php echo $row['medical_certificate']; ?>" readonly>
+                    </label>
+
                     <label for="name">Name:
                         <input type="text" name="name" value="<?php echo $row['name']; ?>" readonly>
                     </label>
@@ -142,6 +146,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="specialization">Specialization:
                         <input type="text" name="specialization" value="<?php echo $row['specialization']; ?>" readonly>
                     </label>
+
+                    <label for="gender">Gender:
+                        <input type="text" name="gender" value="<?php echo $row['gender']; ?>" readonly>
+                    </label>
+
+                    <label for="date_created">Date Created:
+                        <input type="text" name="date_created" value="<?php echo $row['created_at']; ?>" readonly>
+                    </label>
+
 
                     <label for="user_type">User Type:
                         <select name="user_type">

@@ -1,5 +1,6 @@
 <?php
 
+global $conn, $activePage;
 @include '../../config.php';
 @include '../../session.php';
 
@@ -65,7 +66,8 @@ $result = mysqli_query($conn, $selectQuery);
             </button>
         </div>
         <div>
-            <button class="nav-button" name="logout" onclick="window.location.href='/SymptoGuide/logout.php'">Logout</button>
+            <button class="nav-button" name="logout" onclick="window.location.href='/SymptoGuide/logout.php'">Logout
+            </button>
         </div>
     </div>
 
@@ -89,6 +91,11 @@ $result = mysqli_query($conn, $selectQuery);
                         </a>
                     </div>
                 </div>
+
+                <div class="printButton">
+                    <button name="print" onclick="printContent()">Print</button>
+                </div>
+
                 <table id="PatientData">
                     <thead>
                     <tr>
@@ -120,13 +127,13 @@ $result = mysqli_query($conn, $selectQuery);
 
     </div>
 </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#PatientData').DataTable();
-        });
-    </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#PatientData').DataTable();
+    });
+</script>
 
 </body>
 </html>

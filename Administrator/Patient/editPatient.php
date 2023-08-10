@@ -149,6 +149,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="text" name="address" value="<?php echo $row['address']; ?>">
                     </label>
 
+                    <label for="date_created">Date Created:
+                        <input type="text" name="date_created" value="<?php echo $row['date_created']; ?>" readonly>
+                    </label>
+
                     <div>
                         <input type="submit" name="update" value="Update" class="edit_user-update">
                     </div>

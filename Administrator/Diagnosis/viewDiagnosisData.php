@@ -151,6 +151,11 @@ if (isset($_GET['patient_id']) && isset($_GET['date_created'])) {
                             <textarea id="patient_symptoms" name="patient_symptoms" readonly>
                                 <?php echo $diagnosisData['patient_symptoms']; ?></textarea>
                         </label>
+
+                        <label for="date_created">Date Created:
+                            <input type="text" name="date_created" value="<?php echo $diagnosisData['date_created']; ?>" readonly>
+                        </label>
+
                     </form>
                 </div>
             </div>

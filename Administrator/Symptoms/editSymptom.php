@@ -140,6 +140,10 @@ function sanitizeInput($input)
                             <textarea name="symptom_description"><?php echo $row['symptom_description']; ?></textarea>
                         </label>
 
+                        <label for="date_created">Date Created:
+                            <input type="text" name="date_created" value="<?php echo $row['date_created']; ?>" readonly>
+                        </label>
+
                         <div>
                             <input type="submit" name="update" value="Update" class="edit_symptom-update">
                         </div>

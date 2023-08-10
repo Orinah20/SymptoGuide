@@ -97,6 +97,11 @@ $diagnosisData = getGroupedDiagnosisData();
                 <div class="content-data_user--header">
                     <h2>Diagnosis Data</h2>
                 </div>
+
+                <div class="printButton">
+                    <button name="print" onclick="printContent()">Print</button>
+                </div>
+
                 <table id="DiagnosisData">
                     <thead>
                     <tr>

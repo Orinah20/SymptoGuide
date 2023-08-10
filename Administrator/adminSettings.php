@@ -1,64 +1,55 @@
 <?php
-// Include config.php and session.php at the beginning
 include '../config.php';
 include '../session.php';
 
-// Function to retrieve admin data from the database
 function getAdminData($medicalId)
 {
     global $conn;
-
-    $stmt = $conn->prepare("SELECT * FROM users WHERE medical_id = ?");
-    $stmt->bind_param("i", $medicalId);
+    $query = "SELECT * FROM users WHERE medical_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $medicalId);
     $stmt->execute();
     $result = $stmt->get_result();
-
-    // Fetch the admin data
     $adminData = $result->fetch_assoc();
-
-    // Close the statement, but don't close the connection here
     $stmt->close();
-
-    // Return the admin data
     return $adminData;
 }
 
-// Function to update admin data in the database
-function updateAdminData($medicalId, $name, $email, $contactNumber, $specialization, $gender)
+function updateAdminData($medicalId, $name, $email, $contactNumber, $specialization, $gender, $address)
 {
     global $conn;
-    $stmt = $conn->prepare("UPDATE users SET name = ?, email = ?, contact_number = ?, specialization = ?, gender = ? WHERE medical_id = ?");
-    $stmt->bind_param("ssssss", $name, $email, $contactNumber, $specialization, $gender, $medicalId);
-    $stmt->execute();
-
-    // Close the statement, but don't close the connection here
+    $query = "UPDATE users SET name = ?, email = ?, contact_number = ?, specialization = ?, gender = ?, address = ? WHERE medical_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("sssssss", $name, $email, $contactNumber, $specialization, $gender, $address, $medicalId);
+    $success = $stmt->execute();
     $stmt->close();
+    return $success;
 }
 
-// Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    // Redirect to the login page if the user is not logged in
     header('Location: login.php');
     exit;
 }
 
-// Retrieve the current values of the administrator from the users table
-$medicalId = $_SESSION['user_id']; // Assuming the admin's user ID is stored in the session
+$medicalId = $_SESSION['user_id'];
 $adminData = getAdminData($medicalId);
 
-// Check if the form is submitted for updating admin settings
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $contactNumber = $_POST['contact_number'];
     $specialization = $_POST['specialization'];
     $gender = $_POST['gender'];
+    $address = $_POST['address'];
 
-    // Update admin data in the database
-    updateAdminData($medicalId, $name, $email, $contactNumber, $specialization, $gender);
+    $updateSuccess = updateAdminData($medicalId, $name, $email, $contactNumber, $specialization, $gender, $address);
 
-    // Refresh the admin data
-    $adminData = getAdminData($medicalId);
+    if ($updateSuccess) {
+        $adminData = getAdminData($medicalId);
+        echo '<script>alert("Changes made");</script>';
+    } else {
+        echo "Update failed.";
+    }
 }
 ?>
 
@@ -137,17 +128,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="content-data_user">
                 <div class="content-data_user--header">
                     <h2>Admin Settings</h2>
+                        <a href="changePassword.php">
+                            <button name="changePassword">Change Password</button>
+                        </a>
                 </div>
                 <form method="POST" action="" class="adminSetting">
+
                     <label for="name">Medical Id:
                         <input type="text" name="medical_id" id="medical_id"
                                value="<?php echo $adminData['medical_id']; ?>" readonly>
                     </label>
 
+                    <label for="medical_certificate">Medical Certificate:
+                        <input type="text" name="medical_certificate" value="<?php echo $adminData['medical_certificate']; ?>" readonly>
+                    </label>
+
                     <label for="name">Name:
                         <input type="text" name="name" id="name" value="<?php echo $adminData['name']; ?>">
                     </label>
-
 
                     <label for="email">Email:
                         <input type="email" name="email" id="email" value="<?php echo $adminData['email']; ?>">
@@ -163,6 +161,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                value="<?php echo $adminData['specialization']; ?>">
                     </label>
 
+                    <label for="address">Address:
+                        <input type="text" name="address" value="<?php echo $adminData['address']; ?>">
+                    </label>
+
                     <label for="gender">Gender:
                         <select name="gender" id="gender">
                             <option value="Male" <?php if ($adminData['gender'] === 'Male') echo 'selected'; ?>>Male
@@ -175,6 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </option>
                         </select>
                     </label>
+
                     <div>
                         <button type="submit" name="update">Update</button>
                     </div>

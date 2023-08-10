@@ -196,6 +196,10 @@ function sanitizeInput($input)
                             </select>
                         </label>
 
+                        <label for="date_created">Date Created:
+                            <input type="text" name="date_created" value="<?php echo $row['date_created']; ?>" readonly>
+                        </label>
+
                         <div>
                             <input type="submit" name="update" value="Update" class="edit_disease-update">
                         </div>
