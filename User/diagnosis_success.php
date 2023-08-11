@@ -141,10 +141,16 @@ function getDiseaseId($diseaseName)
 <body>
 <div class="container">
     <div class="container_header">
-        <h2>SymptoGuide</h2>
+        <div style="cursor: pointer; ">
+            <h2>
+                <a style="text-decoration: none; color: inherit" href="user.php">SymptoGuide</a>
+            </h2>
+        </div>
         <div class="content_header-left">
-            <div><?php echo $_SESSION['user_name']; ?></div>
-            <a href="../logout.php">Logout</a>
+            <h3><?php echo $_SESSION['user_name']; ?></h3>
+            <a href="../logout.php">
+                <button name="logout">Logout</button>
+            </a>
         </div>
     </div>
 

@@ -961,11 +961,9 @@ input[name="forgot"]:hover,
 input[name="search"]:hover,
 button[name="update"]:hover
 {
-    border: none;
-    border-radius: 0.2rem;
+
     background-color: #c8e5ff;
     color: #000000;
-    padding: 0.5rem;
     cursor: pointer;
 }
 

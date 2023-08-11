@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($row['user_type'] == 'Administrator') {
                 header("Location: /SymptoGuide/Administrator/administrator.php");
             } else {
-                header('Location: /SymptoGuide/User/user.php');
+                header('Location: /SymptoGuide/User/new_diagnosis.php');
             }
             exit();
         } else {

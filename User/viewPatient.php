@@ -57,10 +57,16 @@ if (isset($_GET['patient_id']) && isset($_GET['date_created'])) {
 <body>
 <div class="container">
     <div class="container_header">
-        <h2>SymptoGuide</h2>
+        <div style="cursor: pointer; ">
+            <h2>
+                <a style="text-decoration: none; color: inherit" href="user.php">SymptoGuide</a>
+            </h2>
+        </div>
         <div class="content_header-left">
-            <div><?php echo $_SESSION['user_name']; ?></div>
-            <a href="../logout.php">Logout</a>
+            <h3><?php echo $_SESSION['user_name']; ?></h3>
+            <a href="../logout.php">
+                <button name="logout">Logout</button>
+            </a>
         </div>
     </div>
 
@@ -68,10 +74,12 @@ if (isset($_GET['patient_id']) && isset($_GET['date_created'])) {
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
         <div class="content_data">
             <div class="content_data-header">
-                <a href="view_diagnosis.php" class="back-button">
-                    <img src="../back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">
-                </a>
-                <h3>Patient View</h3>
+                <div class="content_header-left">
+                    <a href="view_diagnosis.php" class="back-button">
+                        <img src="../back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">
+                    </a>
+                    <h3>Patient View</h3>
+                </div>
             </div>
 
             <div class="diagnosis-form">

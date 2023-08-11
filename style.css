@@ -42,24 +42,18 @@ label {
     font-weight: bold;
 }
 
-input[type="text"] {
-    padding: 8px;
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="submit"],
+select {
+    width: 100%;
+    padding: 10px;
     border: 1px solid #ccc;
-    width: 50%;
-}
-
-input[type="submit"] {
-    padding: 8px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-.container{
-    width: 100vw;
-    height: 100vh;
-    margin: 0 auto;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 .container_header{
@@ -73,10 +67,11 @@ input[type="submit"] {
 
 .content_header-left{
     display: flex;
+    align-items: center;
 }
 
-.content_header-left > a{
-    padding-left: 1rem;
+.content_header-left > h3{
+    margin-right: 1rem;
 }
 
 .content{
@@ -84,7 +79,7 @@ input[type="submit"] {
 }
 
 .content_home{
-    top: 15%;
+    top: 5%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -106,10 +101,12 @@ input[type="submit"] {
     width: 100vw;
 }
 
+
 .content_data-header {
     display: flex;
     align-items: center;
-    padding-left: 1rem;
+    justify-content: space-between;
+    padding: 0 14rem;
 }
 
 .addUser_form {
@@ -212,6 +209,153 @@ input[type="submit"] {
 .viewDiagnosis > label {
     width: 30%;
     margin: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.userSettings{
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+button[name="setting"]{
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+    background-color: #5d8fb3;
+    color: #ffffff;
+}
+
+button[name="setting"]:hover {
+    background-color: #c8e5ff;
+    color: #000000;
+    cursor: pointer;
+}
+
+button[name="logout"]{
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    background: #a83e3e;
+    color: #ffffff;
+}
+
+button[name="logout"]:hover {
+    cursor: pointer;
+    border: none;
+    border-radius: 0.25rem;
+    background: #fa5d5d;
+    color: #ffffff;
+}
+
+.settings{
+    max-width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem 0.5rem;
+    align-items: flex-end;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.settings > label{
+    width: 45%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.settings > div {
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+button[name="update"],
+input[name="reset"],
+input[name="search"]
+{
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #5d8fb3;
+    color: #ffffff;
+    padding: 0.5rem;
+}
+
+input[name="reset"]{
+    width: 40%;
+    padding: 0.75rem 0;
+}
+
+button[name="update"]:hover,
+input[name="reset"]:hover,
+input[name="search"]:hover
+{
+    background-color: #c8e5ff;
+    color: #000000;
+    cursor: pointer;
+}
+
+input[readonly],
+textarea[readonly]{
+    background-color: #eaeaea;
+    cursor: not-allowed;
+}
+
+button[name="changePassword"]
+{
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #5d8fb3;
+    color: #ffffff;
+    padding: 0.5rem;
+}
+button[name="changePassword"]:hover{
+    background-color: #c8e5ff;
+    color: #000000;
+    cursor: pointer;
+}
+
+.resetPassword{
+    display: flex;
+    align-items: center;
+    width: 70vw;
+    flex-wrap: wrap;
+    margin: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.resetPassword > label {
+    width: 100%;
+    margin-top: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.resetPassword > div {
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.settingsForm{
+    display: flex;
+    justify-content: center;
+}
+
+.search_results{
+    width: 70vw;
     display: flex;
     flex-direction: column;
     justify-content: center;

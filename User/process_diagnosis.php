@@ -1,4 +1,5 @@
 <?php
+global $conn;
 @include '../config.php';
 @include '../session.php';
 

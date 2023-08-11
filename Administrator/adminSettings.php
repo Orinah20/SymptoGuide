@@ -26,10 +26,6 @@ function updateAdminData($medicalId, $name, $email, $contactNumber, $specializat
     return $success;
 }
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
-}
 
 $medicalId = $_SESSION['user_id'];
 $adminData = getAdminData($medicalId);
