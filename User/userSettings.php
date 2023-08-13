@@ -39,6 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $updateSuccess = updateUserDetails($medicalId, $name, $email, $contactNumber, $specialization, $address, $gender);
 
     if ($updateSuccess) {
+
+        $_SESSION['user_name'] = $name; // Update the user's name
+
         $userDetails = getUserDetails($medicalId);
         echo '<script>alert("Changes made");</script>';
     } else {
@@ -60,11 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container_header">
         <div style="cursor: pointer; ">
             <h2>
-                <a style="text-decoration: none; color: inherit" href="user.php">SymptoGuide</a>
+                <a style="text-decoration: none; color: inherit" href="data.php">SymptoGuide</a>
             </h2>
         </div>
         <div class="content_header-left">
             <h3><?php echo $_SESSION['user_name']; ?></h3>
+            <div class="userSettings"></div>
             <a href="../logout.php">
                 <button name="logout">Logout</button>
             </a>

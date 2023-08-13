@@ -46,6 +46,13 @@ textarea[name="patient_symptoms"]
     margin-top: 10px;
 }
 
+.logo_identifier{
+    position: absolute;
+    font-style: italic;
+    padding: 1rem;
+    left: 28%;
+}
+
 /*Administrator*/
 .container {
     display: flex;

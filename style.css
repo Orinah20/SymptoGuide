@@ -70,12 +70,14 @@ select {
     align-items: center;
 }
 
-.content_header-left > h3{
-    margin-right: 1rem;
+.content{
+    height: 90vh;
 }
 
-.content{
-    height: 90%;
+.content_data{
+    display: flex;
+    margin: 0 15rem;
+    flex-direction: column;
 }
 
 .content_home{
@@ -101,21 +103,17 @@ select {
     width: 100vw;
 }
 
-
 .content_data-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 14rem;
 }
 
 .addUser_form {
     display: flex;
-    padding: 0.5rem 1.5rem;
 }
 
 .addUser{
-    max-width: 70%;
     display: flex;
     flex-wrap: wrap;
     padding: 1rem 0.5rem;
@@ -131,6 +129,13 @@ select {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.addUser > div {
+    width: 100%;
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: flex-end;
 }
 
 #session-expire{
@@ -220,7 +225,11 @@ select {
     padding: 1rem;
 }
 
-button[name="setting"]{
+button[name="setting"],
+button[name="submit"],
+button[name="search"],
+button[name="use"],
+button[name="history"]{
     border: none;
     padding: 0.5rem 1rem;
     font-size: 1rem;
@@ -229,9 +238,25 @@ button[name="setting"]{
     color: #ffffff;
 }
 
-button[name="setting"]:hover {
+button[name="history"] {
+    background-color: #2e8b57;
+    padding: 0.5rem 2rem;
+}
+
+button[name="submit"] {
+margin-top: 1.25rem}
+
+button[name="setting"]:hover,
+button[name="submit"]:hover,
+button[name="use"]:hover,
+button[name="search"]:hover{
     background-color: #c8e5ff;
     color: #000000;
+    cursor: pointer;
+}
+
+button[name="history"]:hover {
+    background-color: rgba(46, 139, 87, 0.9);
     cursor: pointer;
 }
 
@@ -252,7 +277,6 @@ button[name="logout"]:hover {
 }
 
 .settings{
-    max-width: 70%;
     display: flex;
     flex-wrap: wrap;
     padding: 1rem 0.5rem;
@@ -279,7 +303,8 @@ button[name="logout"]:hover {
 
 button[name="update"],
 input[name="reset"],
-input[name="search"]
+input[name="search"],
+input[name="add"]
 {
     border: none;
     border-radius: 0.2rem;
@@ -288,14 +313,22 @@ input[name="search"]
     padding: 0.5rem;
 }
 
-input[name="reset"]{
+input[name="reset"]
+{
     width: 40%;
+    padding: 0.75rem 0;
+}
+
+input[name="add"]
+{
+    width: 20%;
     padding: 0.75rem 0;
 }
 
 button[name="update"]:hover,
 input[name="reset"]:hover,
-input[name="search"]:hover
+input[name="search"]:hover,
+input[name="add"]:hover
 {
     background-color: #c8e5ff;
     color: #000000;
@@ -327,7 +360,6 @@ button[name="changePassword"]:hover{
     align-items: center;
     width: 70vw;
     flex-wrap: wrap;
-    margin: 1rem;
     padding: 1rem 1.5rem;
     border-radius: 0.5rem;
     background-color: #fff;
@@ -359,4 +391,55 @@ button[name="changePassword"]:hover{
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.new_diagnosis{
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem 0.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.new_diagnosis > label{
+    width: 80%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.new_diagnosis > div {
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create_patient{
+    padding: 1rem;
+}
+
+.patient_details > div{
+    padding: 1rem;
+}
+
+.usePatient{
+    margin: auto 0;
+}
+
+textarea[name="disease_description"],
+textarea[name="symptom_description"],
+textarea[name="patient_symptoms"]
+{
+    max-width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    height: 2.5rem;
 }

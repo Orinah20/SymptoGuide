@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="content_header-left">
             <h3><?php echo $_SESSION['user_name']; ?></h3>
+            <div class="userSettings"></div>
             <a href="../logout.php">
                 <button name="logout">Logout</button>
             </a>

@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($row['user_type'] == 'Administrator') {
                 header("Location: /SymptoGuide/Administrator/administrator.php");
             } else {
-                header('Location: /SymptoGuide/User/new_diagnosis.php');
+                header('Location: /SymptoGuide/User/user.php');
             }
             exit();
         } else {
@@ -64,6 +64,7 @@ function sanitizeInput($input)
 </head>
 <body>
 <div class="container">
+    <h1 class="logo_identifier">SymptoGuide - Web Based Diagnosis System</h1>
     <div class="login-form">
         <form action="login.php" method="POST" class="login">
             <h2>Login</h2>

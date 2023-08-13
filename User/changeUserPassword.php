@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="content_header-left">
             <h3><?php echo $_SESSION['user_name']; ?></h3>
+            <div class="userSettings"></div>
             <a href="../logout.php">
                 <button name="logout">Logout</button>
             </a>
@@ -56,16 +57,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="content">
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
         <div class="content_data">
+            <div class="content_header-left">
+                <a href="userSettings.php" class="back-button">
+                    <img src="../back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">
+                </a>
+                <h2>Change Password</h2>
+            </div>
 
 
             <div class="settingsForm">
                 <form action="" method="POST" class="resetPassword">
-                    <span class="content_header-left">
-                        <a href="userSettings.php" class="back-button">
-                            <img src="../back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">
-                        </a>
-                        <h2>Change Password</h2>
-                    </span>
+
                     <label for="new_password">New Password
                         <input type="password" name="new_password" placeholder="New Password" required>
                     </label>

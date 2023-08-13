@@ -64,6 +64,7 @@ if (isset($_GET['patient_id']) && isset($_GET['date_created'])) {
         </div>
         <div class="content_header-left">
             <h3><?php echo $_SESSION['user_name']; ?></h3>
+            <div class="userSettings"></div>
             <a href="../logout.php">
                 <button name="logout">Logout</button>
             </a>

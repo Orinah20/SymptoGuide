@@ -143,11 +143,12 @@ function getDiseaseId($diseaseName)
     <div class="container_header">
         <div style="cursor: pointer; ">
             <h2>
-                <a style="text-decoration: none; color: inherit" href="user.php">SymptoGuide</a>
+                <a style="text-decoration: none; color: inherit" href="data.php">SymptoGuide</a>
             </h2>
         </div>
         <div class="content_header-left">
             <h3><?php echo $_SESSION['user_name']; ?></h3>
+            <div class="userSettings"></div>
             <a href="../logout.php">
                 <button name="logout">Logout</button>
             </a>
@@ -156,25 +157,27 @@ function getDiseaseId($diseaseName)
 
     <div class="content">
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
-        <div class="diagnosis-results">
-            <h2>Disease Probabilities</h2>
-            <table>
-                <tr>
-                    <th>Disease</th>
-                    <th>Probability</th>
-                </tr>
-                <?php foreach ($diseaseProbabilities as $data) : ?>
+        <div class="content_data">
+            <div class="diagnosis-results">
+                <h2>Disease Probabilities</h2>
+                <table>
                     <tr>
-                        <td><?php echo $data['name']; ?></td>
-                        <td><?php echo $data['probability']; ?>%</td>
+                        <th>Disease</th>
+                        <th>Probability</th>
                     </tr>
-                <?php endforeach; ?>
-            </table>
-        </div>
-        <div class="content_data-header">
-            <div class="button-container">
-                <button class="retry-button" onclick="window.location.href='new_diagnosis.php'">New Diagnosis</button>
-                <button class="return-button" onclick="window.location.href='user.php'">Return to User Page</button>
+                    <?php foreach ($diseaseProbabilities as $data) : ?>
+                        <tr>
+                            <td><?php echo $data['name']; ?></td>
+                            <td><?php echo $data['probability']; ?>%</td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+            <div class="content_data-header">
+                <div class="button-container">
+                    <button class="retry-button" onclick="window.location.href='user.php'">Complete
+                    </button>
+                </div>
             </div>
         </div>
     </div>

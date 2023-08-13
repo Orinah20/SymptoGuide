@@ -1,6 +1,6 @@
 <?php
-@include '../config.php';
-@include '../session.php';
+require_once '../config.php';
+require_once '../session.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
     // Retrieve form data
@@ -13,27 +13,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
     // Generate the next patient_id
     $patientId = generatePatientId();
 
-    $_SESSION['patient_id'] = $patientId;
-    $_SESSION['patient_name'] = $patientName;
-
-
     // Prepare the SQL statement to insert data into the patients table
     $stmt = $conn->prepare("INSERT INTO patients (patient_id, patient_name, date_of_birth, gender, contact_number, address) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssss", $patientId, $patientName, $dateOfBirth, $gender, $contactNumber, $address);
 
+
     // Execute the query
     if ($stmt->execute()) {
         // Patient added successfully
-        echo '<script>alert("Patient added successfully. Patient ID: ' . $patientId . '");</script>';
+        $alertMessage = "Patient added successfully. Patient ID: " . $patientId;
+        echo "<script>alert('$alertMessage');</script>";
+        $stmt->close();
+
         header('Location: diagnosis.php');
         exit();
     } else {
         // Failed to add patient
-        echo '<script>alert("Failed to add patient. Try again");</script>';
+        $stmt->close();
+        echo '<script>alert("Failed to add patient. Please try again.");</script>';
     }
 
-    // Close the statement
-    $stmt->close();
 }
 
 // Function to generate the next patient_id
@@ -77,6 +76,7 @@ function generatePatientId()
         </div>
         <div class="content_header-left">
             <h3><?php echo $_SESSION['user_name']; ?></h3>
+            <div class="userSettings"></div>
             <a href="../logout.php">
                 <button name="logout">Logout</button>
             </a>
@@ -87,10 +87,12 @@ function generatePatientId()
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
         <div class="content_data">
             <div class="content_data-header">
-                <a href="new_diagnosis.php" class="back-button">
-                    <img src="../back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">
-                </a>
-                <h3>Add Patient</h3>
+                <div class="content_header-left">
+                    <a href="user.php" class="back-button">
+                        <img src="../back-icon.png" alt="Back" height="30px" width="30px" class="back-icon">
+                    </a>
+                    <h2>Add Patient</h2>
+                </div>
             </div>
             <div class="addUser_form">
                 <form action="" method="POST" class="addUser">
