@@ -86,7 +86,7 @@ function searchPatient($query)
             </div>
             <div class="content_data-header">
                 <div class="content_header-left">
-                    <h1>Biodata</h1>
+                    <h1>Patient Search</h1>
                 </div>
 
                 <div class="userSettings">

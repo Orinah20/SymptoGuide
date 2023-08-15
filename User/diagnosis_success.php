@@ -158,12 +158,12 @@ function getDiseaseId($diseaseName)
     <div class="content">
         <div><p id="session-expire" style="display: none;">Session will expire in: <span id="timer"></span></p></div>
         <div class="content_data">
-            <div class="diagnosis-results">
-                <h2>Disease Probabilities</h2>
-                <table>
+            <h2>Disease Probabilities</h2>
+            <div class="diagnosis_results">
+                <table id="disease_probabilities">
                     <tr>
-                        <th>Disease</th>
-                        <th>Probability</th>
+                        <th><h2><u>Disease</u></h2></th>
+                        <th><h2><u>Probability</u></h2></th>
                     </tr>
                     <?php foreach ($diseaseProbabilities as $data) : ?>
                         <tr>
@@ -173,12 +173,10 @@ function getDiseaseId($diseaseName)
                     <?php endforeach; ?>
                 </table>
             </div>
-            <div class="content_data-header">
                 <div class="button-container">
-                    <button class="retry-button" onclick="window.location.href='user.php'">Complete
+                    <button name="complete" onclick="window.location.href='user.php'">Complete
                     </button>
                 </div>
-            </div>
         </div>
     </div>
 </div>
